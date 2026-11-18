@@ -1,0 +1,2971 @@
+{
+ "version": 1,
+ "bands": [
+  {
+   "id": 1,
+   "min": 33,
+   "max": 99,
+   "label": "33° 이상"
+  },
+  {
+   "id": 2,
+   "min": 31,
+   "max": 32,
+   "label": "31–32°"
+  },
+  {
+   "id": 3,
+   "min": 29,
+   "max": 30,
+   "label": "29–30°"
+  },
+  {
+   "id": 4,
+   "min": 27,
+   "max": 28,
+   "label": "27–28°"
+  },
+  {
+   "id": 5,
+   "min": 25,
+   "max": 26,
+   "label": "25–26°"
+  },
+  {
+   "id": 6,
+   "min": 23,
+   "max": 24,
+   "label": "23–24°"
+  },
+  {
+   "id": 7,
+   "min": 21,
+   "max": 22,
+   "label": "21–22°"
+  },
+  {
+   "id": 8,
+   "min": 19,
+   "max": 20,
+   "label": "19–20°"
+  },
+  {
+   "id": 9,
+   "min": 17,
+   "max": 18,
+   "label": "17–18°"
+  },
+  {
+   "id": 10,
+   "min": 15,
+   "max": 16,
+   "label": "15–16°"
+  },
+  {
+   "id": 11,
+   "min": 13,
+   "max": 14,
+   "label": "13–14°"
+  },
+  {
+   "id": 12,
+   "min": 11,
+   "max": 12,
+   "label": "11–12°"
+  },
+  {
+   "id": 13,
+   "min": 9,
+   "max": 10,
+   "label": "9–10°"
+  },
+  {
+   "id": 14,
+   "min": 7,
+   "max": 8,
+   "label": "7–8°"
+  },
+  {
+   "id": 15,
+   "min": 5,
+   "max": 6,
+   "label": "5–6°"
+  },
+  {
+   "id": 16,
+   "min": 3,
+   "max": 4,
+   "label": "3–4°"
+  },
+  {
+   "id": 17,
+   "min": 1,
+   "max": 2,
+   "label": "1–2°"
+  },
+  {
+   "id": 18,
+   "min": -1,
+   "max": 0,
+   "label": "-1–0°"
+  },
+  {
+   "id": 19,
+   "min": -3,
+   "max": -2,
+   "label": "-3–-2°"
+  },
+  {
+   "id": 20,
+   "min": -99,
+   "max": -4,
+   "label": "-4° 이하"
+  }
+ ],
+ "styles": [
+  {
+   "key": "casual",
+   "label": "캐주얼"
+  },
+  {
+   "key": "minimal",
+   "label": "미니멀"
+  },
+  {
+   "key": "street",
+   "label": "스트릿"
+  },
+  {
+   "key": "office",
+   "label": "출근룩"
+  },
+  {
+   "key": "active",
+   "label": "운동"
+  }
+ ],
+ "genders": [
+  {
+   "key": "f",
+   "label": "여성"
+  },
+  {
+   "key": "m",
+   "label": "남성"
+  }
+ ],
+ "icons": [
+  "coat",
+  "dress",
+  "hoodie",
+  "jacket",
+  "knit",
+  "pad",
+  "shirt",
+  "sleeveless",
+  "tee"
+ ],
+ "count": 200,
+ "outfits": [
+  {
+   "id": "f01-casual",
+   "gender": "f",
+   "band": 1,
+   "style": "casual",
+   "main": "크롭 나시 + 린넨 쇼츠",
+   "extra": "샌들",
+   "icon": "sleeveless",
+   "items": [
+    "크롭 나시",
+    "린넨 쇼츠",
+    "샌들"
+   ]
+  },
+  {
+   "id": "f01-minimal",
+   "gender": "f",
+   "band": 1,
+   "style": "minimal",
+   "main": "슬리브리스 원피스 + 플랫 샌들",
+   "extra": "양산",
+   "icon": "dress",
+   "items": [
+    "슬리브리스 원피스",
+    "플랫 샌들",
+    "양산"
+   ]
+  },
+  {
+   "id": "f01-street",
+   "gender": "f",
+   "band": 1,
+   "style": "street",
+   "main": "크롭 민소매 + 카고 반바지",
+   "extra": "버킷햇",
+   "icon": "sleeveless",
+   "items": [
+    "크롭 민소매",
+    "카고 반바지",
+    "버킷햇"
+   ]
+  },
+  {
+   "id": "f01-office",
+   "gender": "f",
+   "band": 1,
+   "style": "office",
+   "main": "반팔 블라우스 + 린넨 슬랙스",
+   "extra": "냉방용 카디건",
+   "icon": "tee",
+   "items": [
+    "반팔 블라우스",
+    "린넨 슬랙스",
+    "냉방용 카디건"
+   ]
+  },
+  {
+   "id": "f01-active",
+   "gender": "f",
+   "band": 1,
+   "style": "active",
+   "main": "기능성 민소매 + 바이크 쇼츠",
+   "extra": "선캡",
+   "icon": "sleeveless",
+   "items": [
+    "기능성 민소매",
+    "바이크 쇼츠",
+    "선캡"
+   ]
+  },
+  {
+   "id": "f02-casual",
+   "gender": "f",
+   "band": 2,
+   "style": "casual",
+   "main": "나시 + 데님 반바지",
+   "extra": "샌들",
+   "icon": "sleeveless",
+   "items": [
+    "나시",
+    "데님 반바지",
+    "샌들"
+   ]
+  },
+  {
+   "id": "f02-minimal",
+   "gender": "f",
+   "band": 2,
+   "style": "minimal",
+   "main": "린넨 원피스 + 플랫 샌들",
+   "extra": "양산",
+   "icon": "dress",
+   "items": [
+    "린넨 원피스",
+    "플랫 샌들",
+    "양산"
+   ]
+  },
+  {
+   "id": "f02-street",
+   "gender": "f",
+   "band": 2,
+   "style": "street",
+   "main": "그래픽 반팔 + 데님 미니스커트",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "그래픽 반팔",
+    "데님 미니스커트",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f02-office",
+   "gender": "f",
+   "band": 2,
+   "style": "office",
+   "main": "린넨 블라우스 + 와이드 슬랙스",
+   "extra": "냉방용 카디건",
+   "icon": "shirt",
+   "items": [
+    "린넨 블라우스",
+    "와이드 슬랙스",
+    "냉방용 카디건"
+   ]
+  },
+  {
+   "id": "f02-active",
+   "gender": "f",
+   "band": 2,
+   "style": "active",
+   "main": "기능성 반팔 + 레깅스 쇼츠",
+   "extra": "선글라스",
+   "icon": "tee",
+   "items": [
+    "기능성 반팔",
+    "레깅스 쇼츠",
+    "선글라스"
+   ]
+  },
+  {
+   "id": "f03-casual",
+   "gender": "f",
+   "band": 3,
+   "style": "casual",
+   "main": "반팔 티 + 데님 반바지",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "데님 반바지",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f03-minimal",
+   "gender": "f",
+   "band": 3,
+   "style": "minimal",
+   "main": "반팔 니트 + 린넨 와이드 팬츠",
+   "extra": "뮬",
+   "icon": "tee",
+   "items": [
+    "반팔 니트",
+    "린넨 와이드 팬츠",
+    "뮬"
+   ]
+  },
+  {
+   "id": "f03-street",
+   "gender": "f",
+   "band": 3,
+   "style": "street",
+   "main": "크롭 반팔 + 와이드 데님 쇼츠",
+   "extra": "스니커즈",
+   "icon": "tee",
+   "items": [
+    "크롭 반팔",
+    "와이드 데님 쇼츠",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "f03-office",
+   "gender": "f",
+   "band": 3,
+   "style": "office",
+   "main": "반팔 셔츠 + 미디 스커트",
+   "extra": "냉방용 카디건",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "미디 스커트",
+    "냉방용 카디건"
+   ]
+  },
+  {
+   "id": "f03-active",
+   "gender": "f",
+   "band": 3,
+   "style": "active",
+   "main": "반팔 티 + 조거 반바지",
+   "extra": "운동화",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "조거 반바지",
+    "운동화"
+   ]
+  },
+  {
+   "id": "f04-casual",
+   "gender": "f",
+   "band": 4,
+   "style": "casual",
+   "main": "린넨 셔츠 + 플리츠 스커트",
+   "extra": "샌들",
+   "icon": "shirt",
+   "items": [
+    "린넨 셔츠",
+    "플리츠 스커트",
+    "샌들"
+   ]
+  },
+  {
+   "id": "f04-minimal",
+   "gender": "f",
+   "band": 4,
+   "style": "minimal",
+   "main": "반팔 원피스 + 샌들",
+   "extra": "얇은 셔츠",
+   "icon": "dress",
+   "items": [
+    "반팔 원피스",
+    "샌들",
+    "얇은 셔츠"
+   ]
+  },
+  {
+   "id": "f04-street",
+   "gender": "f",
+   "band": 4,
+   "style": "street",
+   "main": "크롭 반팔 + 카고 스커트",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "크롭 반팔",
+    "카고 스커트",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f04-office",
+   "gender": "f",
+   "band": 4,
+   "style": "office",
+   "main": "반팔 블라우스 + 슬랙스",
+   "extra": "얇은 카디건",
+   "icon": "tee",
+   "items": [
+    "반팔 블라우스",
+    "슬랙스",
+    "얇은 카디건"
+   ]
+  },
+  {
+   "id": "f04-active",
+   "gender": "f",
+   "band": 4,
+   "style": "active",
+   "main": "반팔 티 + 바이크 쇼츠",
+   "extra": "바람막이",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "바이크 쇼츠",
+    "바람막이"
+   ]
+  },
+  {
+   "id": "f05-casual",
+   "gender": "f",
+   "band": 5,
+   "style": "casual",
+   "main": "얇은 셔츠 + 데님 스커트",
+   "extra": "스니커즈",
+   "icon": "shirt",
+   "items": [
+    "얇은 셔츠",
+    "데님 스커트",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "f05-minimal",
+   "gender": "f",
+   "band": 5,
+   "style": "minimal",
+   "main": "반팔 니트 + 롱스커트",
+   "extra": "샌들",
+   "icon": "tee",
+   "items": [
+    "반팔 니트",
+    "롱스커트",
+    "샌들"
+   ]
+  },
+  {
+   "id": "f05-street",
+   "gender": "f",
+   "band": 5,
+   "style": "street",
+   "main": "반팔 티 + 데님 롱스커트",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "데님 롱스커트",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f05-office",
+   "gender": "f",
+   "band": 5,
+   "style": "office",
+   "main": "블라우스 + 슬랙스",
+   "extra": "얇은 카디건",
+   "icon": "shirt",
+   "items": [
+    "블라우스",
+    "슬랙스",
+    "얇은 카디건"
+   ]
+  },
+  {
+   "id": "f05-active",
+   "gender": "f",
+   "band": 5,
+   "style": "active",
+   "main": "반팔 티 + 레깅스",
+   "extra": "얇은 바람막이",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "레깅스",
+    "얇은 바람막이"
+   ]
+  },
+  {
+   "id": "f06-casual",
+   "gender": "f",
+   "band": 6,
+   "style": "casual",
+   "main": "얇은 가디건 + 반팔",
+   "extra": "청바지",
+   "icon": "knit",
+   "items": [
+    "얇은 가디건",
+    "반팔",
+    "청바지"
+   ]
+  },
+  {
+   "id": "f06-minimal",
+   "gender": "f",
+   "band": 6,
+   "style": "minimal",
+   "main": "긴팔 블라우스 + 롱스커트",
+   "extra": "플랫슈즈",
+   "icon": "shirt",
+   "items": [
+    "긴팔 블라우스",
+    "롱스커트",
+    "플랫슈즈"
+   ]
+  },
+  {
+   "id": "f06-street",
+   "gender": "f",
+   "band": 6,
+   "style": "street",
+   "main": "오버핏 셔츠 + 크롭 티",
+   "extra": "와이드 청바지",
+   "icon": "shirt",
+   "items": [
+    "오버핏 셔츠",
+    "크롭 티",
+    "와이드 청바지"
+   ]
+  },
+  {
+   "id": "f06-office",
+   "gender": "f",
+   "band": 6,
+   "style": "office",
+   "main": "얇은 블라우스 + 슬랙스",
+   "extra": "카디건",
+   "icon": "shirt",
+   "items": [
+    "얇은 블라우스",
+    "슬랙스",
+    "카디건"
+   ]
+  },
+  {
+   "id": "f06-active",
+   "gender": "f",
+   "band": 6,
+   "style": "active",
+   "main": "긴팔 크롭 티 + 레깅스",
+   "extra": "얇은 바람막이",
+   "icon": "shirt",
+   "items": [
+    "긴팔 크롭 티",
+    "레깅스",
+    "얇은 바람막이"
+   ]
+  },
+  {
+   "id": "f07-casual",
+   "gender": "f",
+   "band": 7,
+   "style": "casual",
+   "main": "긴팔 티 + 롱스커트",
+   "extra": "얇은 셔츠",
+   "icon": "shirt",
+   "items": [
+    "긴팔 티",
+    "롱스커트",
+    "얇은 셔츠"
+   ]
+  },
+  {
+   "id": "f07-minimal",
+   "gender": "f",
+   "band": 7,
+   "style": "minimal",
+   "main": "얇은 니트 + 슬랙스",
+   "extra": "플랫슈즈",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "슬랙스",
+    "플랫슈즈"
+   ]
+  },
+  {
+   "id": "f07-street",
+   "gender": "f",
+   "band": 7,
+   "style": "street",
+   "main": "롱슬리브 + 와이드 카고",
+   "extra": "볼캡",
+   "icon": "shirt",
+   "items": [
+    "롱슬리브",
+    "와이드 카고",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f07-office",
+   "gender": "f",
+   "band": 7,
+   "style": "office",
+   "main": "블라우스 + 얇은 카디건",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "블라우스",
+    "얇은 카디건",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "f07-active",
+   "gender": "f",
+   "band": 7,
+   "style": "active",
+   "main": "긴팔 기능성 티 + 레깅스",
+   "extra": "바람막이",
+   "icon": "shirt",
+   "items": [
+    "긴팔 기능성 티",
+    "레깅스",
+    "바람막이"
+   ]
+  },
+  {
+   "id": "f08-casual",
+   "gender": "f",
+   "band": 8,
+   "style": "casual",
+   "main": "맨투맨 + 청바지",
+   "extra": "캡 모자",
+   "icon": "knit",
+   "items": [
+    "맨투맨",
+    "청바지",
+    "캡 모자"
+   ]
+  },
+  {
+   "id": "f08-minimal",
+   "gender": "f",
+   "band": 8,
+   "style": "minimal",
+   "main": "얇은 니트 + 롱스커트",
+   "extra": "트렌치코트",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "롱스커트",
+    "트렌치코트"
+   ]
+  },
+  {
+   "id": "f08-street",
+   "gender": "f",
+   "band": 8,
+   "style": "street",
+   "main": "맨투맨 + 와이드 카고",
+   "extra": "볼캡",
+   "icon": "knit",
+   "items": [
+    "맨투맨",
+    "와이드 카고",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f08-office",
+   "gender": "f",
+   "band": 8,
+   "style": "office",
+   "main": "셔츠 원피스 + 얇은 카디건",
+   "extra": "플랫슈즈",
+   "icon": "dress",
+   "items": [
+    "셔츠 원피스",
+    "얇은 카디건",
+    "플랫슈즈"
+   ]
+  },
+  {
+   "id": "f08-active",
+   "gender": "f",
+   "band": 8,
+   "style": "active",
+   "main": "트레이닝 집업 + 레깅스",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "트레이닝 집업",
+    "레깅스",
+    "운동화"
+   ]
+  },
+  {
+   "id": "f09-casual",
+   "gender": "f",
+   "band": 9,
+   "style": "casual",
+   "main": "후드티 + 플리츠 스커트",
+   "extra": "스니커즈",
+   "icon": "hoodie",
+   "items": [
+    "후드티",
+    "플리츠 스커트",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "f09-minimal",
+   "gender": "f",
+   "band": 9,
+   "style": "minimal",
+   "main": "니트 + 롱스커트",
+   "extra": "얇은 트렌치코트",
+   "icon": "knit",
+   "items": [
+    "니트",
+    "롱스커트",
+    "얇은 트렌치코트"
+   ]
+  },
+  {
+   "id": "f09-street",
+   "gender": "f",
+   "band": 9,
+   "style": "street",
+   "main": "후드티 + 조거",
+   "extra": "스니커즈",
+   "icon": "hoodie",
+   "items": [
+    "후드티",
+    "조거",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "f09-office",
+   "gender": "f",
+   "band": 9,
+   "style": "office",
+   "main": "블라우스 + 트위드 재킷",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "블라우스",
+    "트위드 재킷",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "f09-active",
+   "gender": "f",
+   "band": 9,
+   "style": "active",
+   "main": "후드 집업 + 레깅스",
+   "extra": "운동화",
+   "icon": "hoodie",
+   "items": [
+    "후드 집업",
+    "레깅스",
+    "운동화"
+   ]
+  },
+  {
+   "id": "f10-casual",
+   "gender": "f",
+   "band": 10,
+   "style": "casual",
+   "main": "얇은 니트 + 청바지",
+   "extra": "가디건",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "청바지",
+    "가디건"
+   ]
+  },
+  {
+   "id": "f10-minimal",
+   "gender": "f",
+   "band": 10,
+   "style": "minimal",
+   "main": "트렌치코트 + 원피스",
+   "extra": "앵클부츠",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "원피스",
+    "앵클부츠"
+   ]
+  },
+  {
+   "id": "f10-street",
+   "gender": "f",
+   "band": 10,
+   "style": "street",
+   "main": "데님 재킷 + 후드티",
+   "extra": "와이드 청바지",
+   "icon": "jacket",
+   "items": [
+    "데님 재킷",
+    "후드티",
+    "와이드 청바지"
+   ]
+  },
+  {
+   "id": "f10-office",
+   "gender": "f",
+   "band": 10,
+   "style": "office",
+   "main": "블라우스 + 재킷",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "블라우스",
+    "재킷",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "f10-active",
+   "gender": "f",
+   "band": 10,
+   "style": "active",
+   "main": "바람막이 + 레깅스",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "바람막이",
+    "레깅스",
+    "운동화"
+   ]
+  },
+  {
+   "id": "f11-casual",
+   "gender": "f",
+   "band": 11,
+   "style": "casual",
+   "main": "셔츠 재킷 + 롱스커트",
+   "extra": "스카프",
+   "icon": "jacket",
+   "items": [
+    "셔츠 재킷",
+    "롱스커트",
+    "스카프"
+   ]
+  },
+  {
+   "id": "f11-minimal",
+   "gender": "f",
+   "band": 11,
+   "style": "minimal",
+   "main": "트렌치코트 + 니트 원피스",
+   "extra": "앵클부츠",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "니트 원피스",
+    "앵클부츠"
+   ]
+  },
+  {
+   "id": "f11-street",
+   "gender": "f",
+   "band": 11,
+   "style": "street",
+   "main": "데님 재킷 + 크롭 맨투맨",
+   "extra": "볼캡",
+   "icon": "jacket",
+   "items": [
+    "데님 재킷",
+    "크롭 맨투맨",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "f11-office",
+   "gender": "f",
+   "band": 11,
+   "style": "office",
+   "main": "트위드 재킷 + 블라우스",
+   "extra": "스타킹",
+   "icon": "jacket",
+   "items": [
+    "트위드 재킷",
+    "블라우스",
+    "스타킹"
+   ]
+  },
+  {
+   "id": "f11-active",
+   "gender": "f",
+   "band": 11,
+   "style": "active",
+   "main": "플리스 집업 + 레깅스",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "플리스 집업",
+    "레깅스",
+    "운동화"
+   ]
+  },
+  {
+   "id": "f12-casual",
+   "gender": "f",
+   "band": 12,
+   "style": "casual",
+   "main": "데님 재킷 + 니트",
+   "extra": "롱스커트",
+   "icon": "jacket",
+   "items": [
+    "데님 재킷",
+    "니트",
+    "롱스커트"
+   ]
+  },
+  {
+   "id": "f12-minimal",
+   "gender": "f",
+   "band": 12,
+   "style": "minimal",
+   "main": "트렌치코트 + 니트",
+   "extra": "앵클부츠",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "니트",
+    "앵클부츠"
+   ]
+  },
+  {
+   "id": "f12-street",
+   "gender": "f",
+   "band": 12,
+   "style": "street",
+   "main": "항공 점퍼 + 후드티",
+   "extra": "와이드 청바지",
+   "icon": "jacket",
+   "items": [
+    "항공 점퍼",
+    "후드티",
+    "와이드 청바지"
+   ]
+  },
+  {
+   "id": "f12-office",
+   "gender": "f",
+   "band": 12,
+   "style": "office",
+   "main": "트렌치코트 + 블라우스",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "블라우스",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "f12-active",
+   "gender": "f",
+   "band": 12,
+   "style": "active",
+   "main": "바람막이 + 기모 레깅스",
+   "extra": "긴팔 이너",
+   "icon": "jacket",
+   "items": [
+    "바람막이",
+    "기모 레깅스",
+    "긴팔 이너"
+   ]
+  },
+  {
+   "id": "f13-casual",
+   "gender": "f",
+   "band": 13,
+   "style": "casual",
+   "main": "퀼팅 재킷 + 니트",
+   "extra": "청바지",
+   "icon": "jacket",
+   "items": [
+    "퀼팅 재킷",
+    "니트",
+    "청바지"
+   ]
+  },
+  {
+   "id": "f13-minimal",
+   "gender": "f",
+   "band": 13,
+   "style": "minimal",
+   "main": "트렌치코트 + 터틀넥",
+   "extra": "앵클부츠",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "터틀넥",
+    "앵클부츠"
+   ]
+  },
+  {
+   "id": "f13-street",
+   "gender": "f",
+   "band": 13,
+   "style": "street",
+   "main": "항공 점퍼 + 크롭 후드",
+   "extra": "비니",
+   "icon": "jacket",
+   "items": [
+    "항공 점퍼",
+    "크롭 후드",
+    "비니"
+   ]
+  },
+  {
+   "id": "f13-office",
+   "gender": "f",
+   "band": 13,
+   "style": "office",
+   "main": "울 재킷 + 블라우스",
+   "extra": "스타킹",
+   "icon": "jacket",
+   "items": [
+    "울 재킷",
+    "블라우스",
+    "스타킹"
+   ]
+  },
+  {
+   "id": "f13-active",
+   "gender": "f",
+   "band": 13,
+   "style": "active",
+   "main": "경량 패딩 조끼 + 후드 집업",
+   "extra": "기모 레깅스",
+   "icon": "pad",
+   "items": [
+    "경량 패딩 조끼",
+    "후드 집업",
+    "기모 레깅스"
+   ]
+  },
+  {
+   "id": "f14-casual",
+   "gender": "f",
+   "band": 14,
+   "style": "casual",
+   "main": "가죽 재킷 + 니트",
+   "extra": "롱스커트",
+   "icon": "jacket",
+   "items": [
+    "가죽 재킷",
+    "니트",
+    "롱스커트"
+   ]
+  },
+  {
+   "id": "f14-minimal",
+   "gender": "f",
+   "band": 14,
+   "style": "minimal",
+   "main": "트렌치코트 + 니트 원피스",
+   "extra": "롱부츠",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "니트 원피스",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f14-street",
+   "gender": "f",
+   "band": 14,
+   "style": "street",
+   "main": "가죽 재킷 + 후드티",
+   "extra": "와이드 카고",
+   "icon": "jacket",
+   "items": [
+    "가죽 재킷",
+    "후드티",
+    "와이드 카고"
+   ]
+  },
+  {
+   "id": "f14-office",
+   "gender": "f",
+   "band": 14,
+   "style": "office",
+   "main": "핸드메이드 코트 + 블라우스",
+   "extra": "스타킹",
+   "icon": "coat",
+   "items": [
+    "핸드메이드 코트",
+    "블라우스",
+    "스타킹"
+   ]
+  },
+  {
+   "id": "f14-active",
+   "gender": "f",
+   "band": 14,
+   "style": "active",
+   "main": "경량 패딩 + 레깅스",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "경량 패딩",
+    "레깅스",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "f15-casual",
+   "gender": "f",
+   "band": 15,
+   "style": "casual",
+   "main": "숏 코트 + 니트",
+   "extra": "기모 청바지",
+   "icon": "coat",
+   "items": [
+    "숏 코트",
+    "니트",
+    "기모 청바지"
+   ]
+  },
+  {
+   "id": "f15-minimal",
+   "gender": "f",
+   "band": 15,
+   "style": "minimal",
+   "main": "울 코트 + 니트",
+   "extra": "앵클부츠",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "니트",
+    "앵클부츠"
+   ]
+  },
+  {
+   "id": "f15-street",
+   "gender": "f",
+   "band": 15,
+   "style": "street",
+   "main": "보아 플리스 + 후드티",
+   "extra": "비니",
+   "icon": "jacket",
+   "items": [
+    "보아 플리스",
+    "후드티",
+    "비니"
+   ]
+  },
+  {
+   "id": "f15-office",
+   "gender": "f",
+   "band": 15,
+   "style": "office",
+   "main": "울 코트 + 니트 원피스",
+   "extra": "스타킹",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "니트 원피스",
+    "스타킹"
+   ]
+  },
+  {
+   "id": "f15-active",
+   "gender": "f",
+   "band": 15,
+   "style": "active",
+   "main": "경량 패딩 + 기모 레깅스",
+   "extra": "장갑",
+   "icon": "pad",
+   "items": [
+    "경량 패딩",
+    "기모 레깅스",
+    "장갑"
+   ]
+  },
+  {
+   "id": "f16-casual",
+   "gender": "f",
+   "band": 16,
+   "style": "casual",
+   "main": "울 코트 + 터틀넥",
+   "extra": "목도리",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "터틀넥",
+    "목도리"
+   ]
+  },
+  {
+   "id": "f16-minimal",
+   "gender": "f",
+   "band": 16,
+   "style": "minimal",
+   "main": "핸드메이드 코트 + 터틀넥",
+   "extra": "롱부츠",
+   "icon": "coat",
+   "items": [
+    "핸드메이드 코트",
+    "터틀넥",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f16-street",
+   "gender": "f",
+   "band": 16,
+   "style": "street",
+   "main": "숏패딩 + 와이드 카고",
+   "extra": "비니",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "와이드 카고",
+    "비니"
+   ]
+  },
+  {
+   "id": "f16-office",
+   "gender": "f",
+   "band": 16,
+   "style": "office",
+   "main": "울 코트 + 니트",
+   "extra": "기모 스타킹",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "니트",
+    "기모 스타킹"
+   ]
+  },
+  {
+   "id": "f16-active",
+   "gender": "f",
+   "band": 16,
+   "style": "active",
+   "main": "숏패딩 + 기모 레깅스",
+   "extra": "장갑",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 레깅스",
+    "장갑"
+   ]
+  },
+  {
+   "id": "f17-casual",
+   "gender": "f",
+   "band": 17,
+   "style": "casual",
+   "main": "무스탕 + 목폴라",
+   "extra": "기모 롱스커트",
+   "icon": "coat",
+   "items": [
+    "무스탕",
+    "목폴라",
+    "기모 롱스커트"
+   ]
+  },
+  {
+   "id": "f17-minimal",
+   "gender": "f",
+   "band": 17,
+   "style": "minimal",
+   "main": "롱 울코트 + 목폴라",
+   "extra": "롱부츠",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "목폴라",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f17-street",
+   "gender": "f",
+   "band": 17,
+   "style": "street",
+   "main": "숏패딩 + 기모 후드",
+   "extra": "어그부츠",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 후드",
+    "어그부츠"
+   ]
+  },
+  {
+   "id": "f17-office",
+   "gender": "f",
+   "band": 17,
+   "style": "office",
+   "main": "롱 울코트 + 니트 원피스",
+   "extra": "기모 스타킹",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "니트 원피스",
+    "기모 스타킹"
+   ]
+  },
+  {
+   "id": "f17-active",
+   "gender": "f",
+   "band": 17,
+   "style": "active",
+   "main": "숏패딩 + 기모 레깅스",
+   "extra": "이어워머",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 레깅스",
+    "이어워머"
+   ]
+  },
+  {
+   "id": "f18-casual",
+   "gender": "f",
+   "band": 18,
+   "style": "casual",
+   "main": "숏패딩 + 니트",
+   "extra": "어그부츠",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "니트",
+    "어그부츠"
+   ]
+  },
+  {
+   "id": "f18-minimal",
+   "gender": "f",
+   "band": 18,
+   "style": "minimal",
+   "main": "롱 울코트 + 캐시미어 니트",
+   "extra": "롱부츠",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "캐시미어 니트",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f18-street",
+   "gender": "f",
+   "band": 18,
+   "style": "street",
+   "main": "숏패딩 + 기모 후드",
+   "extra": "레그워머",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 후드",
+    "레그워머"
+   ]
+  },
+  {
+   "id": "f18-office",
+   "gender": "f",
+   "band": 18,
+   "style": "office",
+   "main": "롱 울코트 + 목폴라 원피스",
+   "extra": "가죽 장갑",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "목폴라 원피스",
+    "가죽 장갑"
+   ]
+  },
+  {
+   "id": "f18-active",
+   "gender": "f",
+   "band": 18,
+   "style": "active",
+   "main": "숏패딩 + 기모 레깅스",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 레깅스",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "f19-casual",
+   "gender": "f",
+   "band": 19,
+   "style": "casual",
+   "main": "롱패딩 + 니트",
+   "extra": "머플러",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "니트",
+    "머플러"
+   ]
+  },
+  {
+   "id": "f19-minimal",
+   "gender": "f",
+   "band": 19,
+   "style": "minimal",
+   "main": "롱패딩 + 캐시미어 니트",
+   "extra": "롱부츠",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "캐시미어 니트",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f19-street",
+   "gender": "f",
+   "band": 19,
+   "style": "street",
+   "main": "롱패딩 + 기모 후드",
+   "extra": "어그부츠",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "기모 후드",
+    "어그부츠"
+   ]
+  },
+  {
+   "id": "f19-office",
+   "gender": "f",
+   "band": 19,
+   "style": "office",
+   "main": "롱패딩 + 니트 원피스",
+   "extra": "기모 스타킹",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "니트 원피스",
+    "기모 스타킹"
+   ]
+  },
+  {
+   "id": "f19-active",
+   "gender": "f",
+   "band": 19,
+   "style": "active",
+   "main": "롱패딩 + 기모 레깅스",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "기모 레깅스",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "f20-casual",
+   "gender": "f",
+   "band": 20,
+   "style": "casual",
+   "main": "헤비 패딩 + 히트텍",
+   "extra": "귀마개",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "히트텍",
+    "귀마개"
+   ]
+  },
+  {
+   "id": "f20-minimal",
+   "gender": "f",
+   "band": 20,
+   "style": "minimal",
+   "main": "구스 롱패딩 + 터틀넥",
+   "extra": "롱부츠",
+   "icon": "pad",
+   "items": [
+    "구스 롱패딩",
+    "터틀넥",
+    "롱부츠"
+   ]
+  },
+  {
+   "id": "f20-street",
+   "gender": "f",
+   "band": 20,
+   "style": "street",
+   "main": "헤비 패딩 + 기모 후드",
+   "extra": "어그부츠",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "기모 후드",
+    "어그부츠"
+   ]
+  },
+  {
+   "id": "f20-office",
+   "gender": "f",
+   "band": 20,
+   "style": "office",
+   "main": "구스 롱패딩 + 니트",
+   "extra": "기모 스타킹",
+   "icon": "pad",
+   "items": [
+    "구스 롱패딩",
+    "니트",
+    "기모 스타킹"
+   ]
+  },
+  {
+   "id": "f20-active",
+   "gender": "f",
+   "band": 20,
+   "style": "active",
+   "main": "헤비 패딩 + 기모 레깅스",
+   "extra": "핫팩",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "기모 레깅스",
+    "핫팩"
+   ]
+  },
+  {
+   "id": "m01-casual",
+   "gender": "m",
+   "band": 1,
+   "style": "casual",
+   "main": "민소매 + 반바지",
+   "extra": "슬리퍼",
+   "icon": "sleeveless",
+   "items": [
+    "민소매",
+    "반바지",
+    "슬리퍼"
+   ]
+  },
+  {
+   "id": "m01-minimal",
+   "gender": "m",
+   "band": 1,
+   "style": "minimal",
+   "main": "린넨 반팔 셔츠 + 린넨 반바지",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "린넨 반팔 셔츠",
+    "린넨 반바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m01-street",
+   "gender": "m",
+   "band": 1,
+   "style": "street",
+   "main": "오버핏 반팔 + 카고 반바지",
+   "extra": "버킷햇",
+   "icon": "tee",
+   "items": [
+    "오버핏 반팔",
+    "카고 반바지",
+    "버킷햇"
+   ]
+  },
+  {
+   "id": "m01-office",
+   "gender": "m",
+   "band": 1,
+   "style": "office",
+   "main": "반팔 셔츠 + 린넨 슬랙스",
+   "extra": "쿨 소재 양말",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "린넨 슬랙스",
+    "쿨 소재 양말"
+   ]
+  },
+  {
+   "id": "m01-active",
+   "gender": "m",
+   "band": 1,
+   "style": "active",
+   "main": "기능성 반팔 + 러닝 쇼츠",
+   "extra": "선캡",
+   "icon": "tee",
+   "items": [
+    "기능성 반팔",
+    "러닝 쇼츠",
+    "선캡"
+   ]
+  },
+  {
+   "id": "m02-casual",
+   "gender": "m",
+   "band": 2,
+   "style": "casual",
+   "main": "나시 + 린넨 팬츠",
+   "extra": "샌들",
+   "icon": "sleeveless",
+   "items": [
+    "나시",
+    "린넨 팬츠",
+    "샌들"
+   ]
+  },
+  {
+   "id": "m02-minimal",
+   "gender": "m",
+   "band": 2,
+   "style": "minimal",
+   "main": "린넨 셔츠 + 면 반바지",
+   "extra": "로퍼",
+   "icon": "shirt",
+   "items": [
+    "린넨 셔츠",
+    "면 반바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m02-street",
+   "gender": "m",
+   "band": 2,
+   "style": "street",
+   "main": "그래픽 반팔 + 나일론 반바지",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "그래픽 반팔",
+    "나일론 반바지",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m02-office",
+   "gender": "m",
+   "band": 2,
+   "style": "office",
+   "main": "반팔 폴로 + 린넨 슬랙스",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "반팔 폴로",
+    "린넨 슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m02-active",
+   "gender": "m",
+   "band": 2,
+   "style": "active",
+   "main": "기능성 반팔 + 러닝 쇼츠",
+   "extra": "선글라스",
+   "icon": "tee",
+   "items": [
+    "기능성 반팔",
+    "러닝 쇼츠",
+    "선글라스"
+   ]
+  },
+  {
+   "id": "m03-casual",
+   "gender": "m",
+   "band": 3,
+   "style": "casual",
+   "main": "반팔 티 + 면 반바지",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "면 반바지",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m03-minimal",
+   "gender": "m",
+   "band": 3,
+   "style": "minimal",
+   "main": "반팔 니트 + 린넨 슬랙스",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "반팔 니트",
+    "린넨 슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m03-street",
+   "gender": "m",
+   "band": 3,
+   "style": "street",
+   "main": "오버핏 반팔 + 와이드 반바지",
+   "extra": "스니커즈",
+   "icon": "tee",
+   "items": [
+    "오버핏 반팔",
+    "와이드 반바지",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "m03-office",
+   "gender": "m",
+   "band": 3,
+   "style": "office",
+   "main": "반팔 셔츠 + 면 슬랙스",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "면 슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m03-active",
+   "gender": "m",
+   "band": 3,
+   "style": "active",
+   "main": "기능성 반팔 + 트레이닝 반바지",
+   "extra": "운동화",
+   "icon": "tee",
+   "items": [
+    "기능성 반팔",
+    "트레이닝 반바지",
+    "운동화"
+   ]
+  },
+  {
+   "id": "m04-casual",
+   "gender": "m",
+   "band": 4,
+   "style": "casual",
+   "main": "린넨 셔츠 + 치노 반바지",
+   "extra": "로퍼",
+   "icon": "shirt",
+   "items": [
+    "린넨 셔츠",
+    "치노 반바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m04-minimal",
+   "gender": "m",
+   "band": 4,
+   "style": "minimal",
+   "main": "반팔 셔츠 + 면바지",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "면바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m04-street",
+   "gender": "m",
+   "band": 4,
+   "style": "street",
+   "main": "반팔 티 + 카고 팬츠",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "카고 팬츠",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m04-office",
+   "gender": "m",
+   "band": 4,
+   "style": "office",
+   "main": "반팔 셔츠 + 슬랙스",
+   "extra": "냉방용 얇은 재킷",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "슬랙스",
+    "냉방용 얇은 재킷"
+   ]
+  },
+  {
+   "id": "m04-active",
+   "gender": "m",
+   "band": 4,
+   "style": "active",
+   "main": "반팔 티 + 트레이닝 반바지",
+   "extra": "얇은 바람막이",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "트레이닝 반바지",
+    "얇은 바람막이"
+   ]
+  },
+  {
+   "id": "m05-casual",
+   "gender": "m",
+   "band": 5,
+   "style": "casual",
+   "main": "얇은 셔츠 + 면바지",
+   "extra": "스니커즈",
+   "icon": "shirt",
+   "items": [
+    "얇은 셔츠",
+    "면바지",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "m05-minimal",
+   "gender": "m",
+   "band": 5,
+   "style": "minimal",
+   "main": "반팔 니트 + 슬랙스",
+   "extra": "로퍼",
+   "icon": "tee",
+   "items": [
+    "반팔 니트",
+    "슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m05-street",
+   "gender": "m",
+   "band": 5,
+   "style": "street",
+   "main": "반팔 티 + 와이드 청바지",
+   "extra": "볼캡",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "와이드 청바지",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m05-office",
+   "gender": "m",
+   "band": 5,
+   "style": "office",
+   "main": "반팔 셔츠 + 슬랙스",
+   "extra": "얇은 재킷",
+   "icon": "tee",
+   "items": [
+    "반팔 셔츠",
+    "슬랙스",
+    "얇은 재킷"
+   ]
+  },
+  {
+   "id": "m05-active",
+   "gender": "m",
+   "band": 5,
+   "style": "active",
+   "main": "반팔 티 + 조거 팬츠",
+   "extra": "얇은 바람막이",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "조거 팬츠",
+    "얇은 바람막이"
+   ]
+  },
+  {
+   "id": "m06-casual",
+   "gender": "m",
+   "band": 6,
+   "style": "casual",
+   "main": "얇은 셔츠 + 반팔",
+   "extra": "청바지",
+   "icon": "shirt",
+   "items": [
+    "얇은 셔츠",
+    "반팔",
+    "청바지"
+   ]
+  },
+  {
+   "id": "m06-minimal",
+   "gender": "m",
+   "band": 6,
+   "style": "minimal",
+   "main": "긴팔 티 + 면바지",
+   "extra": "로퍼",
+   "icon": "shirt",
+   "items": [
+    "긴팔 티",
+    "면바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m06-street",
+   "gender": "m",
+   "band": 6,
+   "style": "street",
+   "main": "오버핏 셔츠 + 반팔 티",
+   "extra": "와이드 청바지",
+   "icon": "shirt",
+   "items": [
+    "오버핏 셔츠",
+    "반팔 티",
+    "와이드 청바지"
+   ]
+  },
+  {
+   "id": "m06-office",
+   "gender": "m",
+   "band": 6,
+   "style": "office",
+   "main": "긴팔 셔츠 + 슬랙스",
+   "extra": "로퍼",
+   "icon": "shirt",
+   "items": [
+    "긴팔 셔츠",
+    "슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m06-active",
+   "gender": "m",
+   "band": 6,
+   "style": "active",
+   "main": "반팔 티 + 조거 팬츠",
+   "extra": "얇은 바람막이",
+   "icon": "tee",
+   "items": [
+    "반팔 티",
+    "조거 팬츠",
+    "얇은 바람막이"
+   ]
+  },
+  {
+   "id": "m07-casual",
+   "gender": "m",
+   "band": 7,
+   "style": "casual",
+   "main": "긴팔 티 + 치노",
+   "extra": "얇은 셔츠",
+   "icon": "shirt",
+   "items": [
+    "긴팔 티",
+    "치노",
+    "얇은 셔츠"
+   ]
+  },
+  {
+   "id": "m07-minimal",
+   "gender": "m",
+   "band": 7,
+   "style": "minimal",
+   "main": "얇은 니트 + 슬랙스",
+   "extra": "로퍼",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m07-street",
+   "gender": "m",
+   "band": 7,
+   "style": "street",
+   "main": "긴팔 티 + 카고 팬츠",
+   "extra": "볼캡",
+   "icon": "shirt",
+   "items": [
+    "긴팔 티",
+    "카고 팬츠",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m07-office",
+   "gender": "m",
+   "band": 7,
+   "style": "office",
+   "main": "셔츠 + 슬랙스",
+   "extra": "얇은 니트 조끼",
+   "icon": "shirt",
+   "items": [
+    "셔츠",
+    "슬랙스",
+    "얇은 니트 조끼"
+   ]
+  },
+  {
+   "id": "m07-active",
+   "gender": "m",
+   "band": 7,
+   "style": "active",
+   "main": "긴팔 기능성 티 + 조거 팬츠",
+   "extra": "바람막이",
+   "icon": "shirt",
+   "items": [
+    "긴팔 기능성 티",
+    "조거 팬츠",
+    "바람막이"
+   ]
+  },
+  {
+   "id": "m08-casual",
+   "gender": "m",
+   "band": 8,
+   "style": "casual",
+   "main": "맨투맨 + 슬랙스",
+   "extra": "캡 모자",
+   "icon": "knit",
+   "items": [
+    "맨투맨",
+    "슬랙스",
+    "캡 모자"
+   ]
+  },
+  {
+   "id": "m08-minimal",
+   "gender": "m",
+   "band": 8,
+   "style": "minimal",
+   "main": "얇은 니트 + 면바지",
+   "extra": "로퍼",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "면바지",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m08-street",
+   "gender": "m",
+   "band": 8,
+   "style": "street",
+   "main": "맨투맨 + 와이드 청바지",
+   "extra": "볼캡",
+   "icon": "knit",
+   "items": [
+    "맨투맨",
+    "와이드 청바지",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m08-office",
+   "gender": "m",
+   "band": 8,
+   "style": "office",
+   "main": "셔츠 + 얇은 카디건",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "셔츠",
+    "얇은 카디건",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m08-active",
+   "gender": "m",
+   "band": 8,
+   "style": "active",
+   "main": "트레이닝 재킷 + 조거 팬츠",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "트레이닝 재킷",
+    "조거 팬츠",
+    "운동화"
+   ]
+  },
+  {
+   "id": "m09-casual",
+   "gender": "m",
+   "band": 9,
+   "style": "casual",
+   "main": "후드티 + 청바지",
+   "extra": "스니커즈",
+   "icon": "hoodie",
+   "items": [
+    "후드티",
+    "청바지",
+    "스니커즈"
+   ]
+  },
+  {
+   "id": "m09-minimal",
+   "gender": "m",
+   "band": 9,
+   "style": "minimal",
+   "main": "니트 + 슬랙스",
+   "extra": "셔츠 재킷",
+   "icon": "knit",
+   "items": [
+    "니트",
+    "슬랙스",
+    "셔츠 재킷"
+   ]
+  },
+  {
+   "id": "m09-street",
+   "gender": "m",
+   "band": 9,
+   "style": "street",
+   "main": "후드티 + 카고 팬츠",
+   "extra": "볼캡",
+   "icon": "hoodie",
+   "items": [
+    "후드티",
+    "카고 팬츠",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m09-office",
+   "gender": "m",
+   "band": 9,
+   "style": "office",
+   "main": "셔츠 + 블레이저",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "셔츠",
+    "블레이저",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m09-active",
+   "gender": "m",
+   "band": 9,
+   "style": "active",
+   "main": "후드 집업 + 조거 팬츠",
+   "extra": "운동화",
+   "icon": "hoodie",
+   "items": [
+    "후드 집업",
+    "조거 팬츠",
+    "운동화"
+   ]
+  },
+  {
+   "id": "m10-casual",
+   "gender": "m",
+   "band": 10,
+   "style": "casual",
+   "main": "얇은 니트 + 치노",
+   "extra": "가디건",
+   "icon": "knit",
+   "items": [
+    "얇은 니트",
+    "치노",
+    "가디건"
+   ]
+  },
+  {
+   "id": "m10-minimal",
+   "gender": "m",
+   "band": 10,
+   "style": "minimal",
+   "main": "셔츠 + 가디건",
+   "extra": "슬랙스",
+   "icon": "shirt",
+   "items": [
+    "셔츠",
+    "가디건",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m10-street",
+   "gender": "m",
+   "band": 10,
+   "style": "street",
+   "main": "코치 재킷 + 후드티",
+   "extra": "카고 팬츠",
+   "icon": "jacket",
+   "items": [
+    "코치 재킷",
+    "후드티",
+    "카고 팬츠"
+   ]
+  },
+  {
+   "id": "m10-office",
+   "gender": "m",
+   "band": 10,
+   "style": "office",
+   "main": "셔츠 + 블레이저",
+   "extra": "니트 조끼",
+   "icon": "shirt",
+   "items": [
+    "셔츠",
+    "블레이저",
+    "니트 조끼"
+   ]
+  },
+  {
+   "id": "m10-active",
+   "gender": "m",
+   "band": 10,
+   "style": "active",
+   "main": "바람막이 + 조거 팬츠",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "바람막이",
+    "조거 팬츠",
+    "운동화"
+   ]
+  },
+  {
+   "id": "m11-casual",
+   "gender": "m",
+   "band": 11,
+   "style": "casual",
+   "main": "셔츠 재킷 + 면바지",
+   "extra": "스카프",
+   "icon": "jacket",
+   "items": [
+    "셔츠 재킷",
+    "면바지",
+    "스카프"
+   ]
+  },
+  {
+   "id": "m11-minimal",
+   "gender": "m",
+   "band": 11,
+   "style": "minimal",
+   "main": "트렌치코트 + 니트",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "니트",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m11-street",
+   "gender": "m",
+   "band": 11,
+   "style": "street",
+   "main": "데님 재킷 + 맨투맨",
+   "extra": "볼캡",
+   "icon": "jacket",
+   "items": [
+    "데님 재킷",
+    "맨투맨",
+    "볼캡"
+   ]
+  },
+  {
+   "id": "m11-office",
+   "gender": "m",
+   "band": 11,
+   "style": "office",
+   "main": "블레이저 + 니트",
+   "extra": "슬랙스",
+   "icon": "jacket",
+   "items": [
+    "블레이저",
+    "니트",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m11-active",
+   "gender": "m",
+   "band": 11,
+   "style": "active",
+   "main": "플리스 집업 + 조거 팬츠",
+   "extra": "운동화",
+   "icon": "jacket",
+   "items": [
+    "플리스 집업",
+    "조거 팬츠",
+    "운동화"
+   ]
+  },
+  {
+   "id": "m12-casual",
+   "gender": "m",
+   "band": 12,
+   "style": "casual",
+   "main": "데님 재킷 + 맨투맨",
+   "extra": "청바지",
+   "icon": "jacket",
+   "items": [
+    "데님 재킷",
+    "맨투맨",
+    "청바지"
+   ]
+  },
+  {
+   "id": "m12-minimal",
+   "gender": "m",
+   "band": 12,
+   "style": "minimal",
+   "main": "트렌치코트 + 니트",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "니트",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m12-street",
+   "gender": "m",
+   "band": 12,
+   "style": "street",
+   "main": "항공 점퍼 + 후드티",
+   "extra": "카고 팬츠",
+   "icon": "jacket",
+   "items": [
+    "항공 점퍼",
+    "후드티",
+    "카고 팬츠"
+   ]
+  },
+  {
+   "id": "m12-office",
+   "gender": "m",
+   "band": 12,
+   "style": "office",
+   "main": "트렌치코트 + 셔츠",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "셔츠",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m12-active",
+   "gender": "m",
+   "band": 12,
+   "style": "active",
+   "main": "바람막이 + 긴팔 이너",
+   "extra": "조거 팬츠",
+   "icon": "jacket",
+   "items": [
+    "바람막이",
+    "긴팔 이너",
+    "조거 팬츠"
+   ]
+  },
+  {
+   "id": "m13-casual",
+   "gender": "m",
+   "band": 13,
+   "style": "casual",
+   "main": "바람막이 + 니트",
+   "extra": "후드",
+   "icon": "jacket",
+   "items": [
+    "바람막이",
+    "니트",
+    "후드"
+   ]
+  },
+  {
+   "id": "m13-minimal",
+   "gender": "m",
+   "band": 13,
+   "style": "minimal",
+   "main": "트렌치코트 + 터틀넥",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "터틀넥",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m13-street",
+   "gender": "m",
+   "band": 13,
+   "style": "street",
+   "main": "항공 점퍼 + 후드티",
+   "extra": "비니",
+   "icon": "jacket",
+   "items": [
+    "항공 점퍼",
+    "후드티",
+    "비니"
+   ]
+  },
+  {
+   "id": "m13-office",
+   "gender": "m",
+   "band": 13,
+   "style": "office",
+   "main": "울 재킷 + 니트",
+   "extra": "슬랙스",
+   "icon": "jacket",
+   "items": [
+    "울 재킷",
+    "니트",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m13-active",
+   "gender": "m",
+   "band": 13,
+   "style": "active",
+   "main": "경량 패딩 조끼 + 후드 집업",
+   "extra": "조거 팬츠",
+   "icon": "pad",
+   "items": [
+    "경량 패딩 조끼",
+    "후드 집업",
+    "조거 팬츠"
+   ]
+  },
+  {
+   "id": "m14-casual",
+   "gender": "m",
+   "band": 14,
+   "style": "casual",
+   "main": "가죽 재킷 + 니트",
+   "extra": "청바지",
+   "icon": "jacket",
+   "items": [
+    "가죽 재킷",
+    "니트",
+    "청바지"
+   ]
+  },
+  {
+   "id": "m14-minimal",
+   "gender": "m",
+   "band": 14,
+   "style": "minimal",
+   "main": "트렌치코트 + 슬랙스",
+   "extra": "로퍼",
+   "icon": "coat",
+   "items": [
+    "트렌치코트",
+    "슬랙스",
+    "로퍼"
+   ]
+  },
+  {
+   "id": "m14-street",
+   "gender": "m",
+   "band": 14,
+   "style": "street",
+   "main": "가죽 재킷 + 후드티",
+   "extra": "비니",
+   "icon": "jacket",
+   "items": [
+    "가죽 재킷",
+    "후드티",
+    "비니"
+   ]
+  },
+  {
+   "id": "m14-office",
+   "gender": "m",
+   "band": 14,
+   "style": "office",
+   "main": "싱글 코트 + 셔츠",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "싱글 코트",
+    "셔츠",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m14-active",
+   "gender": "m",
+   "band": 14,
+   "style": "active",
+   "main": "경량 패딩 + 조거 팬츠",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "경량 패딩",
+    "조거 팬츠",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "m15-casual",
+   "gender": "m",
+   "band": 15,
+   "style": "casual",
+   "main": "가죽 재킷 + 히트텍",
+   "extra": "기모 후드",
+   "icon": "jacket",
+   "items": [
+    "가죽 재킷",
+    "히트텍",
+    "기모 후드"
+   ]
+  },
+  {
+   "id": "m15-minimal",
+   "gender": "m",
+   "band": 15,
+   "style": "minimal",
+   "main": "울 코트 + 니트",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "니트",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m15-street",
+   "gender": "m",
+   "band": 15,
+   "style": "street",
+   "main": "플리스 재킷 + 후드티",
+   "extra": "비니",
+   "icon": "jacket",
+   "items": [
+    "플리스 재킷",
+    "후드티",
+    "비니"
+   ]
+  },
+  {
+   "id": "m15-office",
+   "gender": "m",
+   "band": 15,
+   "style": "office",
+   "main": "체스터 코트 + 셔츠",
+   "extra": "니트 조끼",
+   "icon": "coat",
+   "items": [
+    "체스터 코트",
+    "셔츠",
+    "니트 조끼"
+   ]
+  },
+  {
+   "id": "m15-active",
+   "gender": "m",
+   "band": 15,
+   "style": "active",
+   "main": "경량 패딩 + 기모 조거",
+   "extra": "장갑",
+   "icon": "pad",
+   "items": [
+    "경량 패딩",
+    "기모 조거",
+    "장갑"
+   ]
+  },
+  {
+   "id": "m16-casual",
+   "gender": "m",
+   "band": 16,
+   "style": "casual",
+   "main": "더플코트 + 니트",
+   "extra": "목도리",
+   "icon": "coat",
+   "items": [
+    "더플코트",
+    "니트",
+    "목도리"
+   ]
+  },
+  {
+   "id": "m16-minimal",
+   "gender": "m",
+   "band": 16,
+   "style": "minimal",
+   "main": "울 코트 + 터틀넥",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "터틀넥",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m16-street",
+   "gender": "m",
+   "band": 16,
+   "style": "street",
+   "main": "숏패딩 + 후드티",
+   "extra": "비니",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "후드티",
+    "비니"
+   ]
+  },
+  {
+   "id": "m16-office",
+   "gender": "m",
+   "band": 16,
+   "style": "office",
+   "main": "울 코트 + 니트",
+   "extra": "히트텍",
+   "icon": "coat",
+   "items": [
+    "울 코트",
+    "니트",
+    "히트텍"
+   ]
+  },
+  {
+   "id": "m16-active",
+   "gender": "m",
+   "band": 16,
+   "style": "active",
+   "main": "숏패딩 + 기모 조거",
+   "extra": "장갑",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 조거",
+    "장갑"
+   ]
+  },
+  {
+   "id": "m17-casual",
+   "gender": "m",
+   "band": 17,
+   "style": "casual",
+   "main": "무스탕 + 목폴라",
+   "extra": "기모 바지",
+   "icon": "coat",
+   "items": [
+    "무스탕",
+    "목폴라",
+    "기모 바지"
+   ]
+  },
+  {
+   "id": "m17-minimal",
+   "gender": "m",
+   "band": 17,
+   "style": "minimal",
+   "main": "롱 울코트 + 목폴라",
+   "extra": "슬랙스",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "목폴라",
+    "슬랙스"
+   ]
+  },
+  {
+   "id": "m17-street",
+   "gender": "m",
+   "band": 17,
+   "style": "street",
+   "main": "숏패딩 + 기모 후드",
+   "extra": "비니",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 후드",
+    "비니"
+   ]
+  },
+  {
+   "id": "m17-office",
+   "gender": "m",
+   "band": 17,
+   "style": "office",
+   "main": "롱 울코트 + 정장",
+   "extra": "히트텍",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "정장",
+    "히트텍"
+   ]
+  },
+  {
+   "id": "m17-active",
+   "gender": "m",
+   "band": 17,
+   "style": "active",
+   "main": "숏패딩 + 기모 트레이닝 팬츠",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 트레이닝 팬츠",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "m18-casual",
+   "gender": "m",
+   "band": 18,
+   "style": "casual",
+   "main": "숏패딩 + 니트",
+   "extra": "장갑",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "니트",
+    "장갑"
+   ]
+  },
+  {
+   "id": "m18-minimal",
+   "gender": "m",
+   "band": 18,
+   "style": "minimal",
+   "main": "롱 울코트 + 캐시미어 니트",
+   "extra": "목도리",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "캐시미어 니트",
+    "목도리"
+   ]
+  },
+  {
+   "id": "m18-street",
+   "gender": "m",
+   "band": 18,
+   "style": "street",
+   "main": "숏패딩 + 기모 후드",
+   "extra": "비니",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 후드",
+    "비니"
+   ]
+  },
+  {
+   "id": "m18-office",
+   "gender": "m",
+   "band": 18,
+   "style": "office",
+   "main": "롱 울코트 + 목폴라",
+   "extra": "장갑",
+   "icon": "coat",
+   "items": [
+    "롱 울코트",
+    "목폴라",
+    "장갑"
+   ]
+  },
+  {
+   "id": "m18-active",
+   "gender": "m",
+   "band": 18,
+   "style": "active",
+   "main": "숏패딩 + 기모 트레이닝 팬츠",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "숏패딩",
+    "기모 트레이닝 팬츠",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "m19-casual",
+   "gender": "m",
+   "band": 19,
+   "style": "casual",
+   "main": "롱패딩 + 머플러",
+   "extra": "내복",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "머플러",
+    "내복"
+   ]
+  },
+  {
+   "id": "m19-minimal",
+   "gender": "m",
+   "band": 19,
+   "style": "minimal",
+   "main": "롱패딩 + 캐시미어 니트",
+   "extra": "가죽 장갑",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "캐시미어 니트",
+    "가죽 장갑"
+   ]
+  },
+  {
+   "id": "m19-street",
+   "gender": "m",
+   "band": 19,
+   "style": "street",
+   "main": "롱패딩 + 기모 후드",
+   "extra": "비니",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "기모 후드",
+    "비니"
+   ]
+  },
+  {
+   "id": "m19-office",
+   "gender": "m",
+   "band": 19,
+   "style": "office",
+   "main": "롱패딩 + 정장",
+   "extra": "히트텍",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "정장",
+    "히트텍"
+   ]
+  },
+  {
+   "id": "m19-active",
+   "gender": "m",
+   "band": 19,
+   "style": "active",
+   "main": "롱패딩 + 기모 트레이닝 팬츠",
+   "extra": "넥워머",
+   "icon": "pad",
+   "items": [
+    "롱패딩",
+    "기모 트레이닝 팬츠",
+    "넥워머"
+   ]
+  },
+  {
+   "id": "m20-casual",
+   "gender": "m",
+   "band": 20,
+   "style": "casual",
+   "main": "헤비 패딩 + 내복",
+   "extra": "귀마개",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "내복",
+    "귀마개"
+   ]
+  },
+  {
+   "id": "m20-minimal",
+   "gender": "m",
+   "band": 20,
+   "style": "minimal",
+   "main": "구스 롱패딩 + 터틀넥",
+   "extra": "캐시미어 목도리",
+   "icon": "pad",
+   "items": [
+    "구스 롱패딩",
+    "터틀넥",
+    "캐시미어 목도리"
+   ]
+  },
+  {
+   "id": "m20-street",
+   "gender": "m",
+   "band": 20,
+   "style": "street",
+   "main": "헤비 패딩 + 기모 후드",
+   "extra": "방한 부츠",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "기모 후드",
+    "방한 부츠"
+   ]
+  },
+  {
+   "id": "m20-office",
+   "gender": "m",
+   "band": 20,
+   "style": "office",
+   "main": "구스 롱패딩 + 정장",
+   "extra": "히트텍",
+   "icon": "pad",
+   "items": [
+    "구스 롱패딩",
+    "정장",
+    "히트텍"
+   ]
+  },
+  {
+   "id": "m20-active",
+   "gender": "m",
+   "band": 20,
+   "style": "active",
+   "main": "헤비 패딩 + 기모 트레이닝 팬츠",
+   "extra": "핫팩",
+   "icon": "pad",
+   "items": [
+    "헤비 패딩",
+    "기모 트레이닝 팬츠",
+    "핫팩"
+   ]
+  }
+ ]
+}

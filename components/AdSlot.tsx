@@ -23,19 +23,25 @@ function useAdDevice(): Device | null {
   return device;
 }
 
-/** 수동 광고 단위. device가 현재 화면과 다르면 그리지 않는다(숨김 광고 금지). */
+/**
+ * 수동 광고 단위. device가 현재 화면과 다르면 그리지 않는다(숨김 광고 금지).
+ * fixed: Google 허용 방식 — auto/full-width 없이 CSS 고정 높이(하단 빈칸·잘림 방지).
+ */
 export function AdSlot({
   slot,
   device,
   hidden = false,
   className = '',
   format = 'auto',
+  fixed = false,
 }: {
   slot: AdSlotId | string;
   device: Device;
   hidden?: boolean;
   className?: string;
   format?: 'auto' | 'vertical' | 'horizontal' | 'rectangle';
+  /** 모바일 홈 등: 고정 높이 배너. data-ad-format / full-width-responsive 미사용 */
+  fixed?: boolean;
 }) {
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const current = useAdDevice();
@@ -45,7 +51,7 @@ export function AdSlot({
 
   useEffect(() => {
     pushed.current = false;
-  }, [slot, device]);
+  }, [slot, device, fixed]);
 
   useEffect(() => {
     if (!mine || hidden || pushed.current) return;
@@ -82,20 +88,25 @@ export function AdSlot({
       cancelled = true;
       window.clearInterval(tick);
     };
-  }, [hidden, mine, slot]);
+  }, [fixed, hidden, mine, slot]);
 
   if (!mine) return null;
+  const classes = `ad-slot${fixed ? ' ad-fixed' : ''}${hidden ? ' away' : ''}${className ? ` ${className}` : ''}`;
   return (
-    <aside className={`ad-slot${hidden ? ' away' : ''}${className ? ` ${className}` : ''}`} aria-label="광고">
-      <ins
-        ref={insRef}
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client={client}
-        data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
-      />
+    <aside className={classes} aria-label="광고">
+      {fixed ? (
+        <ins ref={insRef} className="adsbygoogle" style={{ display: 'block' }} data-ad-client={client} data-ad-slot={slot} />
+      ) : (
+        <ins
+          ref={insRef}
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client={client}
+          data-ad-slot={slot}
+          data-ad-format={format}
+          data-full-width-responsive="true"
+        />
+      )}
     </aside>
   );
 }

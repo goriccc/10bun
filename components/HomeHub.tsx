@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { AdSlot } from '@/components/AdSlot';
 import { serviceById, services, type Service } from '@/content/services';
-import { AD_SLOTS } from '@/content/ads';
+import { AD_SLOTS, isFoldPhoneUa, moShelfAdEvery } from '@/content/ads';
 import { todaySetIds } from '@/content/today-set';
 import { kstDateKey, kstWeekday, msUntilKstMidnight } from '@/lib/daily';
 import { loadDone } from '@/lib/done';
@@ -70,12 +70,18 @@ export function HomeHub() {
   const [clock, setClock] = useState('--:--:--');
   const [now, setNow] = useState(() => Date.now());
   const [filter, setFilter] = useState<Filter>('all');
+  const [moShelfEvery, setMoShelfEvery] = useState(3);
   const set = todaySetIds.map((id) => serviceById(id)).filter((item): item is Service => Boolean(item));
   const total = set.reduce((sum, item) => sum + item.minutes, 0);
   const finished = set.filter((item) => done.includes(item.id)).length;
   const next = set.find((item) => !done.includes(item.id)) ?? set[0];
 
   useEffect(() => {
+    const fold = isFoldPhoneUa(navigator.userAgent);
+    const syncShelf = () => setMoShelfEvery(moShelfAdEvery(window.innerWidth, fold));
+    syncShelf();
+    window.addEventListener('resize', syncShelf);
+    window.addEventListener('orientationchange', syncShelf);
     const timer = window.setTimeout(() => setDone(loadDone()), 0);
     const tick = () => {
       const sec = Math.max(0, Math.floor(msUntilKstMidnight() / 1000));
@@ -117,6 +123,8 @@ export function HomeHub() {
       })
       .catch(() => undefined);
     return () => {
+      window.removeEventListener('resize', syncShelf);
+      window.removeEventListener('orientationchange', syncShelf);
       window.clearTimeout(timer);
       window.clearInterval(clockTimer);
       window.clearInterval(fishTimer);
@@ -231,7 +239,7 @@ export function HomeHub() {
             <span className="v">{clock}</span>
           </div>
         </aside>
-        <AdSlot slot={AD_SLOTS.moHomeLive} device="mobile" className="compact home-ad" />
+        <AdSlot slot={AD_SLOTS.moHomeLive} device="mobile" fixed className="compact home-ad" />
       </section>
       <section className="wrap">
         <div className="champs">
@@ -260,7 +268,7 @@ export function HomeHub() {
             })}
           </div>
         </div>
-        <AdSlot slot={AD_SLOTS.moHomeChamps} device="mobile" className="compact home-ad" />
+        <AdSlot slot={AD_SLOTS.moHomeChamps} device="mobile" fixed className="compact home-ad" />
         <AdSlot slot={AD_SLOTS.pcHomeChamps} device="desktop" className="compact home-ad" />
       </section>
       <section className="wrap">
@@ -285,7 +293,7 @@ export function HomeHub() {
           </div>
         </div>
         <div className="shelf">
-          {shelfWithAds(shown, (service) => (
+          {shelfWithAds(shown, moShelfEvery, (service) => (
             <Link key={service.id} href={`/${service.slug}`} className={`gadget g-${service.color}`} style={{ ['--span' as string]: service.span }}>
               <div className={`face${LIGHT.has(service.color) ? ' th-dark' : ''}`}>
                 <Thumb service={service} fish={liveFish} now={now} />
@@ -311,17 +319,18 @@ export function HomeHub() {
   );
 }
 
-/** 모바일: 카드 3개마다 / PC: 데스크톱 span 기준 2줄마다 광고. 마지막 카드 뒤에는 넣지 않아 gap 상·하가 대칭. */
-function shelfWithAds(list: Service[], render: (service: Service) => ReactNode): ReactNode[] {
+/** 모바일: 카드 N개마다(기본 3, 폴드 세로 펼침 4) / PC: span 기준 2줄마다. 마지막 카드 뒤 광고 없음. */
+function shelfWithAds(list: Service[], moEvery: number, render: (service: Service) => ReactNode): ReactNode[] {
   const out: ReactNode[] = [];
   let spanSum = 0;
   let rows = 0;
   const last = list.length - 1;
+  const every = Math.max(1, moEvery);
   list.forEach((service, index) => {
     out.push(render(service));
     const hasMore = index < last;
-    if (hasMore && (index + 1) % 3 === 0) {
-      out.push(<AdSlot key={`mo-shelf-${service.id}-${index}`} slot={AD_SLOTS.moHomeShelf} device="mobile" className="shelf-ad" />);
+    if (hasMore && (index + 1) % every === 0) {
+      out.push(<AdSlot key={`mo-shelf-${service.id}-${index}`} slot={AD_SLOTS.moHomeShelf} device="mobile" fixed className="shelf-ad" />);
     }
     spanSum += Math.min(12, Math.max(1, service.span));
     while (spanSum >= 12) {

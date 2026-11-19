@@ -340,6 +340,11 @@ button{font:inherit;color:inherit}
 */
 .ad-slot{margin:24px 0 0;padding:0;min-height:0;width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow:visible}
 .ad-slot .adsbygoogle{display:block;width:100%;max-width:100%;margin-inline:auto;box-sizing:border-box}
+/* 미게재 슬롯은 공식 방식으로 접기 */
+ins.adsbygoogle[data-ad-status="unfilled"]{display:none !important}
+.ad-slot:has(> ins[data-ad-status="unfilled"]){display:none}
+/* 모바일 홈 고정 배너: 너비 100%·높이 100px (auto/full-width 미사용 → 하단 빈칸 방지, 잘림 없음) */
+.ad-slot.ad-fixed .adsbygoogle{width:100%;max-width:100%;height:100px;margin-inline:auto}
 /* 하는법 아래 PC 광고: 가운데 말고 왼쪽 정렬 */
 .ad-slot.guide-ad{text-align:left}
 .ad-slot.guide-ad .adsbygoogle{width:100%;max-width:100%;margin-inline:0}

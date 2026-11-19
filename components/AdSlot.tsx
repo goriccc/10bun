@@ -23,17 +23,6 @@ function useAdDevice(): Device | null {
   return device;
 }
 
-/** 애드센스가 잡아 둔 높이보다 실제 iframe이 짧을 때 아래 빈칸을 접는다. */
-function fitAdHeight(ins: HTMLElement) {
-  const iframe = ins.querySelector('iframe');
-  if (!iframe) return;
-  const h = iframe.offsetHeight;
-  if (h < 40) return;
-  ins.style.height = `${h}px`;
-  ins.style.minHeight = '0';
-  ins.style.overflow = 'hidden';
-}
-
 /** 수동 광고 단위. device가 현재 화면과 다르면 그리지 않는다(숨김 광고 금지). */
 export function AdSlot({
   slot,
@@ -92,25 +81,6 @@ export function AdSlot({
     return () => {
       cancelled = true;
       window.clearInterval(tick);
-    };
-  }, [hidden, mine, slot]);
-
-  useEffect(() => {
-    if (!mine || hidden) return;
-    const node = insRef.current;
-    if (!node) return;
-
-    const sync = () => fitAdHeight(node);
-    sync();
-    const obs = new MutationObserver(sync);
-    obs.observe(node, { childList: true, subtree: true, attributes: true });
-    const poll = window.setInterval(sync, 400);
-    window.addEventListener('resize', sync);
-
-    return () => {
-      obs.disconnect();
-      window.clearInterval(poll);
-      window.removeEventListener('resize', sync);
     };
   }, [hidden, mine, slot]);
 

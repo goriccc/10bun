@@ -335,27 +335,23 @@ button{font:inherit;color:inherit}
 .ticket-date{font-family:var(--f-body);font-weight:500;font-size:15px;line-height:1.35;margin:10px 0 0;opacity:.9}
 .ticket-body{padding:24px;min-width:0}
 /*
-  광고 상·하 = 패딩 24px로 통일. 부모 gap/이웃 margin과 겹치지 않게 위치별 보정.
-  (애드센스 iframe이 예약 높이보다 짧아 생기던 하단 빈칸은 AdSlot에서 높이 맞춤)
+  광고 상·하 여백 24px. 음수 margin·overflow 잘림·높이 강제 없음(광고 잘림/좌측 붙음 방지).
+  아래 간격은 이웃 margin과 겹치지 않게 top만 쓰거나, 홈은 양쪽 margin 후 이웃 top 0.
 */
-.ad-slot{margin:0;padding:24px 0;min-height:0;width:100%;max-width:100%;box-sizing:border-box;text-align:center;line-height:0}
-.ad-slot .adsbygoogle{display:block;width:100%;max-width:100%;margin:0 auto;line-height:normal;vertical-align:bottom}
-.ad-slot iframe{display:block;vertical-align:bottom;max-width:100%}
+.ad-slot{margin:24px 0 0;padding:0;min-height:0;width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow:visible}
+.ad-slot .adsbygoogle{display:block;width:100%;max-width:100%;margin-inline:auto;box-sizing:border-box}
 .ad-slot.guide-ad .adsbygoogle{width:100%;max-width:100%}
-/* 선반: grid gap(24)을 상쇄한 뒤 패딩 24만 사용. 위쪽은 카드 shadow(5)만큼 더 */
-.ad-slot.shelf-ad{grid-column:1/-1;margin:-24px 0;padding:29px 0 24px}
-.ad-slot.away{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;margin:0;padding:0;min-height:0}
-/* 히어로: grid gap(24) 상쇄 + live shadow(8) 보정 → 위·아래 맑은 간격 24 */
-.hero > .home-ad{margin:-16px 0 0;padding:24px 0}
+.ad-slot.shelf-ad{grid-column:1/-1;margin:0}
+.ad-slot.away{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;margin:0;min-height:0}
+/* 히어로: 위는 gap(24), 아래는 margin-bottom 24 */
+.hero > .home-ad{margin:0 0 24px}
 .hero + .wrap > .champs{margin-top:0}
-/* 홈 1위 아래 광고: champs shadow(8) 보정. 다음 shelf-bar 위 여백은 광고 패딩이 담당 */
-section.wrap > .home-ad{padding:32px 0 24px}
+/* 홈 1위 아래: 상·하 margin 24. shelf-bar 위는 0으로 이중 여백 방지 */
+section.wrap > .home-ad{margin:24px 0}
 section.wrap:has(> .champs) + section.wrap > .shelf-bar{margin-top:0}
-/* 상세: 위만 패딩(아래는 d-grid gap / pager 24). 순위·기계 box-shadow만큼 위 보정 */
-.detail .ad-slot{padding:24px 0 0}
-.detail .lb + .ad-slot{padding-top:34px}
-.detail .machine + .ad-slot{padding-top:30px}
-.detail .guide-ad{padding:24px 0 0}
+/* 상세: 위 24만 — 아래는 d-grid gap / pager */
+.detail .ad-slot{margin:24px 0 0}
+.detail .guide-ad{margin:24px 0 0}
 .banner{display:flex;gap:12px;align-items:center;justify-content:space-between;background:var(--yellow);border-radius:16px;padding:12px 14px;font-weight:700;margin-bottom:16px}
 .banner.soft{background:var(--paper);box-shadow:0 3px 0 var(--line);color:var(--ink);justify-content:center;text-align:center;flex-wrap:wrap}
 .clk{font-family:var(--f-disp);font-size:46px;letter-spacing:1px;min-height:56px;line-height:1}

@@ -79,9 +79,12 @@ export function GameFrame({
             <div className="screen">{children}</div>
           </section>
           {service.ranked ? <RankBoard gameId={service.id} revision={revision} profile={profile} onSave={onSave} /> : null}
-          {/* 상세 공통: 순위(또는 놀이) 아래 수평 광고 — 순위·번돈형·서버 집계형 모두 */}
-          <AdSlot slot={AD_SLOTS.moDetailRank} device="mobile" format="horizontal" className="compact" />
-          <AdSlot slot={AD_SLOTS.pcDetailRank} device="desktop" format="horizontal" className="compact" />
+          {/*
+            MO/PC 상세 · 순위영역 아래(수평형) 동일 슬롯.
+            전국순위(RankBoard)가 있으면 그 아래, 없으면 놀이영역(machine) 바로 아래.
+          */}
+          <AdSlot slot={AD_SLOTS.moDetailRank} device="mobile" format="auto" className="compact" />
+          <AdSlot slot={AD_SLOTS.pcDetailRank} device="desktop" format="auto" className="compact" />
         </div>
         <div className="guide-col">
           <aside className="guide">

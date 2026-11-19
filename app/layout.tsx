@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Do_Hyeon, IBM_Plex_Sans_KR } from 'next/font/google';
+import Script from 'next/script';
 import { Analytics } from '@/components/Analytics';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -33,8 +34,19 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   return (
     <html lang="ko" className={`${display.variable} ${body.variable}`}>
+      <head>
+        {adsenseClient ? (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          />
+        ) : null}
+      </head>
       <body>
         <SiteHeader />
         <main>{children}</main>

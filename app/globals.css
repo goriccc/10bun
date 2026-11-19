@@ -157,11 +157,12 @@ button{font:inherit;color:inherit}
 .g-center > .field,.g-center > .form-stack{width:min(100%,340px)}
 .g-center > .form-stack{align-items:stretch}
 .g-center > .btn{align-self:center}
-.profile-form{display:flex;flex-direction:column;gap:12px;color:var(--ink)}
-.profile-form .field{color:var(--ink)}
+.profile-form{display:flex;flex-direction:column;gap:12px;color:var(--ink);width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.profile-form .field{color:var(--ink);min-width:0;width:100%}
+.profile-form .field input,.profile-form .field select,.profile-form .inp{width:100%;max-width:100%}
 .profile-form-actions{display:flex;justify-content:center;margin-top:8px}
 .profile-form .hint{text-align:center;margin:0;color:var(--ink2)}
-.lb-who .profile-form{width:100%}
+.lb-who .profile-form{flex:1 1 100%;width:100%;max-width:100%;min-width:0}
 .lb-who .panel{color:var(--ink)}
 .fish-controls .field{color:var(--ink)}
 .fish-controls .form-stack{gap:18px}
@@ -258,11 +259,12 @@ button{font:inherit;color:inherit}
 .tk.used{background:var(--bg2);box-shadow:none}
 .rankline{margin:8px 0 0;font-weight:700;font-size:16px}
 .rankline b{background:var(--yellow);border-radius:8px;padding:1px 8px}
-.lb{margin-top:34px;background:var(--ink);color:#fff;border-radius:var(--r-xl);padding:26px 26px 20px;box-shadow:0 10px 0 #120e2e;position:relative;overflow:hidden}
-.lb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.lb{margin-top:34px;background:var(--ink);color:#fff;border-radius:var(--r-xl);padding:26px 26px 20px;box-shadow:0 10px 0 #120e2e;position:relative;overflow:hidden;max-width:100%;min-width:0;box-sizing:border-box}
+.lb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;min-width:0}
 .lb h2{font-family:var(--f-disp);font-weight:400;font-size:30px;margin:0;line-height:1.1}
 .lb-top p,.lb-foot,.lb-who{margin:2px 0 0;color:#B9B4DC;font-size:13px}
-.lb-who{margin-top:12px;font-size:14px;color:#D8D4F2;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.lb-who{margin-top:12px;font-size:14px;color:#D8D4F2;display:flex;gap:10px;align-items:center;flex-wrap:wrap;width:100%;max-width:100%;min-width:0}
+.lb-who > span{min-width:0;overflow-wrap:anywhere}
 .lb-who b{color:#fff}
 .lb-who .linkbtn{color:var(--yellow)}
 .lb-me{margin-top:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;background:rgba(255,255,255,.07);border-radius:20px;padding:16px 20px}

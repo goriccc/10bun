@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { AdSlot } from '@/components/AdSlot';
 import { serviceById, services, type Service } from '@/content/services';
+import { AD_SLOTS } from '@/content/ads';
 import { todaySetIds } from '@/content/today-set';
 import { kstDateKey, kstWeekday, msUntilKstMidnight } from '@/lib/daily';
 import { loadDone } from '@/lib/done';
@@ -178,6 +180,7 @@ export function HomeHub() {
               {finished ? '이어서 하기' : '첫 번째 시작하기'}
             </Link>
           ) : null}
+          <AdSlot slot={AD_SLOTS.pcHomeStart} device="desktop" className="compact home-ad" />
         </div>
         <aside className="live" aria-label="지금 다른 사람들">
           <h2>지금 다른 사람들은</h2>
@@ -228,6 +231,7 @@ export function HomeHub() {
             </span>
             <span className="v">{clock}</span>
           </div>
+          <AdSlot slot={AD_SLOTS.moHomeLive} device="mobile" className="compact home-ad" />
         </aside>
       </section>
       <section className="wrap">
@@ -257,6 +261,8 @@ export function HomeHub() {
             })}
           </div>
         </div>
+        <AdSlot slot={AD_SLOTS.moHomeChamps} device="mobile" className="compact home-ad" />
+        <AdSlot slot={AD_SLOTS.pcHomeChamps} device="desktop" className="compact home-ad" />
       </section>
       <section className="wrap">
         <div className="shelf-bar">
@@ -280,7 +286,7 @@ export function HomeHub() {
           </div>
         </div>
         <div className="shelf">
-          {shown.map((service) => (
+          {shelfWithAds(shown, (service) => (
             <Link key={service.id} href={`/${service.slug}`} className={`gadget g-${service.color}`} style={{ ['--span' as string]: service.span }}>
               <div className={`face${LIGHT.has(service.color) ? ' th-dark' : ''}`}>
                 <Thumb service={service} fish={liveFish} now={now} />
@@ -304,6 +310,28 @@ export function HomeHub() {
       </section>
     </>
   );
+}
+
+/** 모바일: 카드 3개마다 / PC: 데스크톱 span 기준 2줄마다 광고. */
+function shelfWithAds(list: Service[], render: (service: Service) => ReactNode): ReactNode[] {
+  const out: ReactNode[] = [];
+  let spanSum = 0;
+  let rows = 0;
+  list.forEach((service, index) => {
+    out.push(render(service));
+    if ((index + 1) % 3 === 0) {
+      out.push(<AdSlot key={`mo-shelf-${service.id}-${index}`} slot={AD_SLOTS.moHomeShelf} device="mobile" className="shelf-ad" />);
+    }
+    spanSum += Math.min(12, Math.max(1, service.span));
+    while (spanSum >= 12) {
+      spanSum -= 12;
+      rows += 1;
+      if (rows % 2 === 0) {
+        out.push(<AdSlot key={`pc-shelf-${service.id}-${rows}`} slot={AD_SLOTS.pcHomeShelf} device="desktop" className="shelf-ad" />);
+      }
+    }
+  });
+  return out;
 }
 
 function Timer({ items, done, total, finished }: { items: Service[]; done: number[]; total: number; finished: number }) {

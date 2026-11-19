@@ -4,7 +4,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Aquarium } from '@/components/games/Aquarium';
 import { fishKind } from '@/components/games/fish-species';
 import { GameFrame } from '@/components/games/GameFrame';
-import { AdSlot } from '@/components/AdSlot';
 import { ShareSheet } from '@/components/ShareSheet';
 import { useDeviceProfile } from '@/components/useDeviceProfile';
 import { regions } from '@/content/regions';
@@ -420,7 +419,6 @@ export function FishGame({ initial }: { initial?: Board | null }) {
                 </>
               );
             })()}
-            <AdSlot />
           </div>
         </div>
       </GameFrame>

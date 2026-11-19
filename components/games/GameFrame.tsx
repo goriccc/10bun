@@ -6,6 +6,7 @@ import { AdSlot } from '@/components/AdSlot';
 import { ProfileForm } from '@/components/ProfileForm';
 import { RankBoard } from '@/components/RankBoard';
 import { ShareBar } from '@/components/ShareBar';
+import { AD_SLOTS } from '@/content/ads';
 import { guideKeep, guides } from '@/content/guides';
 import { services, type Service } from '@/content/services';
 import type { DeviceProfile } from '@/lib/device';
@@ -78,25 +79,33 @@ export function GameFrame({
             <div className="screen">{children}</div>
           </section>
           {service.ranked ? <RankBoard gameId={service.id} revision={revision} profile={profile} onSave={onSave} /> : null}
-          {service.ad ? <AdSlot hidden={playing} /> : null}
+          {service.ranked ? (
+            <>
+              <AdSlot slot={AD_SLOTS.moDetailRank} device="mobile" className="compact" />
+              <AdSlot slot={AD_SLOTS.pcDetailRank} device="desktop" className="compact" />
+            </>
+          ) : null}
         </div>
-        <aside className="guide">
-          {side}
-          <h2>하는 법</h2>
-          <p>{guide?.how}</p>
-          <h2>규칙</h2>
-          <p>{guide?.rules}</p>
-          {service.ranked ? <p>{guideKeep}</p> : null}
-          <h2>자주 묻는 질문</h2>
-          <dl>
-            {guide?.faq.map((item) => (
-              <div key={item.q}>
-                <dt>{item.q}</dt>
-                <dd>{item.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </aside>
+        <div className="guide-col">
+          <aside className="guide">
+            {side}
+            <h2>하는 법</h2>
+            <p>{guide?.how}</p>
+            <h2>규칙</h2>
+            <p>{guide?.rules}</p>
+            {service.ranked ? <p>{guideKeep}</p> : null}
+            <h2>자주 묻는 질문</h2>
+            <dl>
+              {guide?.faq.map((item) => (
+                <div key={item.q}>
+                  <dt>{item.q}</dt>
+                  <dd>{item.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+          {service.ad ? <AdSlot slot={AD_SLOTS.pcDetailGuide} device="desktop" className="guide-ad" /> : null}
+        </div>
       </div>
       <nav className="pager" aria-label="다른 놀이">
         <Link href={`/${prev.slug}`}>

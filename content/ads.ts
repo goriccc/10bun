@@ -3,7 +3,6 @@ export const AD_SLOTS = {
   moHomeLive: '1665562077',
   moHomeChamps: '4410932888',
   moHomeShelf: '8962045272',
-  moDetailPlay: '6519267651',
   moDetailRank: '8427245697',
   pcHomeChamps: '2252719580',
   pcHomeShelf: '2227622671',

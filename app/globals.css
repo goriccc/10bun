@@ -66,7 +66,7 @@ button{font:inherit;color:inherit}
 
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) minmax(0,.78fr);gap:28px;padding-top:44px;padding-bottom:26px;align-items:start}
 @media (max-width:1080px){.hero{grid-template-columns:1fr 1fr}.live{grid-column:1/-1}}
-@media (max-width:720px){.hero{grid-template-columns:1fr;padding-top:24px;padding-bottom:12px;gap:24px}.hero-copy>.btn{display:flex;width:max-content;max-width:100%;margin-inline:auto}}
+@media (max-width:720px){.hero{grid-template-columns:1fr;padding-top:24px;padding-bottom:0;gap:24px}.hero-copy>.btn{display:flex;width:max-content;max-width:100%;margin-inline:auto}}
 .hero-copy h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,6vw,76px);line-height:1;margin:0 0 14px;letter-spacing:-1.5px}
 .hero-copy > p{margin:0 0 22px;color:var(--ink2);font-size:17px;max-width:30em}
 
@@ -89,9 +89,9 @@ button{font:inherit;color:inherit}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--bg);color:var(--ink2);white-space:nowrap}
 .chip.srv{background:var(--ink);color:#fff}
 .chip.rk{background:var(--yellow);color:var(--ink)}
-.shelf{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px}
+.shelf{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
 @media (max-width:1000px){.gadget{grid-column:span 6 !important}}
-@media (max-width:620px){.shelf{gap:16px}.gadget{grid-column:span 12 !important}}
+@media (max-width:620px){.gadget{grid-column:span 12 !important}}
 .g-red{--c:var(--red);--cd:var(--red-d)}
 .g-blue{--c:var(--blue);--cd:var(--blue-d)}
 .g-yellow{--c:var(--yellow);--cd:var(--yellow-d)}
@@ -100,7 +100,8 @@ button{font:inherit;color:inherit}
 .g-violet{--c:var(--violet);--cd:var(--violet-d)}
 .g-orange{--c:var(--orange);--cd:var(--orange-d)}
 
-.detail{padding-top:28px;padding-bottom:60px;overflow-x:clip;max-width:100%;box-sizing:border-box}
+.detail{padding-top:28px;padding-bottom:60px;overflow-x:clip;box-sizing:border-box}
+.wrap.detail{max-width:1240px;width:100%;margin-inline:auto}
 .back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink2);background:var(--paper);padding:8px 14px 8px 10px;border-radius:999px;box-shadow:0 2px 0 var(--line)}
 .d-head{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;margin:22px 0 24px}
 .d-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-width:0;grid-column:2}
@@ -333,15 +334,21 @@ button{font:inherit;color:inherit}
 .ticket-heading{font-family:var(--f-disp);font-weight:400;font-size:26px;line-height:1.2;letter-spacing:-.4px;margin:0;width:100%;white-space:nowrap;overflow:hidden}
 .ticket-date{font-family:var(--f-body);font-weight:500;font-size:15px;line-height:1.35;margin:10px 0 0;opacity:.9}
 .ticket-body{padding:24px;min-width:0}
-/* 광고 상·하 여백은 24px로 통일. 아래쪽은 다음 블록과 margin이 겹치지 않게 top만 쓰고, 구간의 끝 간격은 부모 gap/pager가 담당 */
+/*
+  광고 상·하 시각 간격 = 항상 24px.
+  기본: margin-top만 24 — 아래 간격은 다음 블록(gap / pager / shelf-bar)이 담당해 이중 여백 방지.
+*/
 .ad-slot{margin:24px 0 0;min-height:0;width:100%;max-width:100%;box-sizing:border-box;text-align:center}
 .ad-slot .adsbygoogle{display:block;width:100%;max-width:100%;margin-inline:auto;text-align:left}
 .ad-slot.guide-ad .adsbygoogle{width:auto;max-width:100%}
-.ad-slot.compact,.ad-slot.home-ad,.ad-slot.guide-ad{margin:24px 0 0}
-.ad-slot.shelf-ad{grid-column:1/-1;margin:24px 0}
+/* 선반: shelf gap(24)이 상·하를 담당 */
+.ad-slot.shelf-ad{grid-column:1/-1;margin:0}
 .ad-slot.away{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;margin:0;min-height:0}
-.hero > .home-ad{margin:0}
-section.wrap:has(> .home-ad) + section.wrap > .shelf-bar{margin-top:24px}
+/* 히어로 광고: 위는 hero gap(24), 아래는 margin-bottom 24 */
+.hero > .home-ad{margin:0 0 24px}
+.hero + .wrap > .champs{margin-top:0}
+/* 홈 1위 다음(광고 유무 무관): shelf-bar 위 24 — 광고는 margin-top만 쓰므로 아래는 이 값이 담당 */
+section.wrap:has(> .champs) + section.wrap > .shelf-bar{margin-top:24px}
 .banner{display:flex;gap:12px;align-items:center;justify-content:space-between;background:var(--yellow);border-radius:16px;padding:12px 14px;font-weight:700;margin-bottom:16px}
 .banner.soft{background:var(--paper);box-shadow:0 3px 0 var(--line);color:var(--ink);justify-content:center;text-align:center;flex-wrap:wrap}
 .clk{font-family:var(--f-disp);font-size:46px;letter-spacing:1px;min-height:56px;line-height:1}

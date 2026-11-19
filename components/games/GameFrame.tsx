@@ -78,7 +78,6 @@ export function GameFrame({
           <section className="machine">
             <div className="screen">{children}</div>
           </section>
-          <AdSlot slot={AD_SLOTS.moDetailPlay} device="mobile" />
           {service.ranked ? <RankBoard gameId={service.id} revision={revision} profile={profile} onSave={onSave} /> : null}
           {service.ranked ? (
             <>

@@ -311,21 +311,23 @@ export function HomeHub() {
   );
 }
 
-/** 모바일: 카드 3개마다 / PC: 데스크톱 span 기준 2줄마다 광고. */
+/** 모바일: 카드 3개마다 / PC: 데스크톱 span 기준 2줄마다 광고. 마지막 카드 뒤에는 넣지 않아 gap 상·하가 대칭. */
 function shelfWithAds(list: Service[], render: (service: Service) => ReactNode): ReactNode[] {
   const out: ReactNode[] = [];
   let spanSum = 0;
   let rows = 0;
+  const last = list.length - 1;
   list.forEach((service, index) => {
     out.push(render(service));
-    if ((index + 1) % 3 === 0) {
+    const hasMore = index < last;
+    if (hasMore && (index + 1) % 3 === 0) {
       out.push(<AdSlot key={`mo-shelf-${service.id}-${index}`} slot={AD_SLOTS.moHomeShelf} device="mobile" className="shelf-ad" />);
     }
     spanSum += Math.min(12, Math.max(1, service.span));
     while (spanSum >= 12) {
       spanSum -= 12;
       rows += 1;
-      if (rows % 2 === 0) {
+      if (hasMore && rows % 2 === 0) {
         out.push(<AdSlot key={`pc-shelf-${service.id}-${rows}`} slot={AD_SLOTS.pcHomeShelf} device="desktop" className="shelf-ad" />);
       }
     }

@@ -101,7 +101,7 @@ export function GameFrame({
               ))}
             </dl>
           </aside>
-          {service.ad ? <AdSlot slot={AD_SLOTS.pcDetailGuide} device="desktop" format="vertical" className="guide-ad" /> : null}
+          <AdSlot slot={AD_SLOTS.pcDetailGuide} device="desktop" format="auto" className="guide-ad" />
         </div>
       </div>
       <nav className="pager" aria-label="다른 놀이">

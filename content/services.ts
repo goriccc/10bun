@@ -65,7 +65,7 @@ export const services: Service[] = [
     ranked: true,
     shared: false,
     tries: 5,
-    ad: false,
+    ad: true,
     share: '오늘 원을 {score}점으로 그렸어요',
   },
   {
@@ -252,7 +252,7 @@ export const services: Service[] = [
     ranked: false,
     shared: true,
     tries: 0,
-    ad: false,
+    ad: true,
     share: '생존 기록',
   },
   {

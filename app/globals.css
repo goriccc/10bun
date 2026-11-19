@@ -340,7 +340,9 @@ button{font:inherit;color:inherit}
 */
 .ad-slot{margin:24px 0 0;padding:0;min-height:0;width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow:visible}
 .ad-slot .adsbygoogle{display:block;width:100%;max-width:100%;margin-inline:auto;box-sizing:border-box}
-.ad-slot.guide-ad .adsbygoogle{width:100%;max-width:100%}
+/* 하는법 아래 PC 광고: 가운데 말고 왼쪽 정렬 */
+.ad-slot.guide-ad{text-align:left}
+.ad-slot.guide-ad .adsbygoogle{width:100%;max-width:100%;margin-inline:0}
 .ad-slot.shelf-ad{grid-column:1/-1;margin:0}
 .ad-slot.away{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;margin:0;min-height:0}
 /* 히어로: 위는 gap(24), 아래는 margin-bottom 24 */

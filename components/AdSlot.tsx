@@ -23,11 +23,13 @@ export function AdSlot({
   device,
   hidden = false,
   className = '',
+  format = 'auto',
 }: {
   slot: AdSlotId | string;
   device: Device;
   hidden?: boolean;
   className?: string;
+  format?: 'auto' | 'vertical' | 'horizontal' | 'rectangle';
 }) {
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const current = useAdDevice();
@@ -52,7 +54,7 @@ export function AdSlot({
         style={{ display: 'block' }}
         data-ad-client={client}
         data-ad-slot={slot}
-        data-ad-format="auto"
+        data-ad-format={format}
         data-full-width-responsive="true"
       />
     </aside>

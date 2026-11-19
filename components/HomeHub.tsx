@@ -180,7 +180,6 @@ export function HomeHub() {
               {finished ? '이어서 하기' : '첫 번째 시작하기'}
             </Link>
           ) : null}
-          <AdSlot slot={AD_SLOTS.pcHomeStart} device="desktop" className="compact home-ad" />
         </div>
         <aside className="live" aria-label="지금 다른 사람들">
           <h2>지금 다른 사람들은</h2>
@@ -231,8 +230,8 @@ export function HomeHub() {
             </span>
             <span className="v">{clock}</span>
           </div>
-          <AdSlot slot={AD_SLOTS.moHomeLive} device="mobile" className="compact home-ad" />
         </aside>
+        <AdSlot slot={AD_SLOTS.moHomeLive} device="mobile" className="compact home-ad" />
       </section>
       <section className="wrap">
         <div className="champs">

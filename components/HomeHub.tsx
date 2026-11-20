@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { AdSlot } from '@/components/AdSlot';
 import { serviceById, services, type Service } from '@/content/services';
-import { AD_SLOTS, isFoldPhoneUa, shelfAdLayout, type ShelfAdLayout } from '@/content/ads';
+import { AD_SLOTS } from '@/content/ads';
 import { todaySetIds } from '@/content/today-set';
 import { kstDateKey, kstWeekday, msUntilKstMidnight } from '@/lib/daily';
 import { loadDone } from '@/lib/done';
@@ -70,18 +70,12 @@ export function HomeHub() {
   const [clock, setClock] = useState('--:--:--');
   const [now, setNow] = useState(() => Date.now());
   const [filter, setFilter] = useState<Filter>('all');
-  const [shelfAds, setShelfAds] = useState<ShelfAdLayout>({ moEvery: 3, pcCardSpan: null });
   const set = todaySetIds.map((id) => serviceById(id)).filter((item): item is Service => Boolean(item));
   const total = set.reduce((sum, item) => sum + item.minutes, 0);
   const finished = set.filter((item) => done.includes(item.id)).length;
   const next = set.find((item) => !done.includes(item.id)) ?? set[0];
 
   useEffect(() => {
-    const fold = isFoldPhoneUa(navigator.userAgent);
-    const syncShelf = () => setShelfAds(shelfAdLayout(window.innerWidth, fold));
-    syncShelf();
-    window.addEventListener('resize', syncShelf);
-    window.addEventListener('orientationchange', syncShelf);
     const timer = window.setTimeout(() => setDone(loadDone()), 0);
     const tick = () => {
       const sec = Math.max(0, Math.floor(msUntilKstMidnight() / 1000));
@@ -123,8 +117,6 @@ export function HomeHub() {
       })
       .catch(() => undefined);
     return () => {
-      window.removeEventListener('resize', syncShelf);
-      window.removeEventListener('orientationchange', syncShelf);
       window.clearTimeout(timer);
       window.clearInterval(clockTimer);
       window.clearInterval(fishTimer);
@@ -293,7 +285,7 @@ export function HomeHub() {
           </div>
         </div>
         <div className="shelf">
-          {shelfWithAds(shown, shelfAds, (service) => (
+          {shelfWithAds(shown, (service) => (
             <Link key={service.id} href={`/${service.slug}`} className={`gadget g-${service.color}`} style={{ ['--span' as string]: service.span }}>
               <div className={`face${LIGHT.has(service.color) ? ' th-dark' : ''}`}>
                 <Thumb service={service} fish={liveFish} now={now} />
@@ -319,27 +311,24 @@ export function HomeHub() {
   );
 }
 
-/** 모바일: 카드 N개마다 / PC: CSS와 같은 span으로 2줄마다. 마지막 카드 뒤 광고 없음. */
-function shelfWithAds(list: Service[], layout: ShelfAdLayout, render: (service: Service) => ReactNode): ReactNode[] {
+/** 모바일: 카드 3개마다 / PC: span 기준 2줄마다. 마지막 카드 뒤 광고 없음. */
+function shelfWithAds(list: Service[], render: (service: Service) => ReactNode): ReactNode[] {
   const out: ReactNode[] = [];
   let spanSum = 0;
   let rows = 0;
   const last = list.length - 1;
-  const every = Math.max(1, layout.moEvery);
   list.forEach((service, index) => {
     out.push(render(service));
     const hasMore = index < last;
-    if (hasMore && (index + 1) % every === 0) {
-      out.push(<AdSlot key={`mo-shelf-${service.id}-${index}-${every}`} slot={AD_SLOTS.moHomeShelf} device="mobile" fixed className="shelf-ad" />);
+    if (hasMore && (index + 1) % 3 === 0) {
+      out.push(<AdSlot key={`mo-shelf-${service.id}-${index}`} slot={AD_SLOTS.moHomeShelf} device="mobile" fixed className="shelf-ad" />);
     }
-    // PC 줄 계산은 화면 CSS(≤1000 → span 6)와 맞춰 가로 폴드에서 4개마다 나오게 함
-    const cardSpan = layout.pcCardSpan ?? Math.min(12, Math.max(1, service.span));
-    spanSum += cardSpan;
+    spanSum += Math.min(12, Math.max(1, service.span));
     while (spanSum >= 12) {
       spanSum -= 12;
       rows += 1;
       if (hasMore && rows % 2 === 0) {
-        out.push(<AdSlot key={`pc-shelf-${service.id}-${rows}-${cardSpan}`} slot={AD_SLOTS.pcHomeShelf} device="desktop" className="shelf-ad" />);
+        out.push(<AdSlot key={`pc-shelf-${service.id}-${rows}`} slot={AD_SLOTS.pcHomeShelf} device="desktop" className="shelf-ad" />);
       }
     }
   });

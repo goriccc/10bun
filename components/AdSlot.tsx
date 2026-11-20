@@ -5,6 +5,9 @@ import { AD_MOBILE_MAX, type AdSlotId } from '@/content/ads';
 
 type Device = 'mobile' | 'desktop';
 
+/** 이 폭 이하에서만 고정 100px 배너. 폴드 세로 펼침 등은 반응형으로 게재. */
+const FIXED_BANNER_MAX = 480;
+
 declare global {
   interface Window {
     adsbygoogle?: Record<string, unknown>[];
@@ -23,9 +26,28 @@ function useAdDevice(): Device | null {
   return device;
 }
 
+function useNarrowFixed(wantFixed: boolean): boolean {
+  const [narrow, setNarrow] = useState(() => {
+    if (!wantFixed || typeof window === 'undefined') return false;
+    return window.matchMedia(`(max-width: ${FIXED_BANNER_MAX}px)`).matches;
+  });
+  useEffect(() => {
+    if (!wantFixed) {
+      setNarrow(false);
+      return;
+    }
+    const mq = window.matchMedia(`(max-width: ${FIXED_BANNER_MAX}px)`);
+    const apply = () => setNarrow(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, [wantFixed]);
+  return wantFixed && narrow;
+}
+
 /**
  * 수동 광고 단위. device가 현재 화면과 다르면 그리지 않는다(숨김 광고 금지).
- * fixed: Google 허용 방식 — auto/full-width 없이 CSS 고정 높이(하단 빈칸·잘림 방지).
+ * fixed: 좁은 폰에서만 고정 높이. 폴드 펼침·넓은 모바일은 auto 반응형.
  */
 export function AdSlot({
   slot,
@@ -40,18 +62,19 @@ export function AdSlot({
   hidden?: boolean;
   className?: string;
   format?: 'auto' | 'vertical' | 'horizontal' | 'rectangle';
-  /** 모바일 홈 등: 고정 높이 배너. data-ad-format / full-width-responsive 미사용 */
+  /** 좁은 모바일 홈: 고정 높이 배너. 넓은 폭에서는 무시하고 반응형 */
   fixed?: boolean;
 }) {
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const current = useAdDevice();
+  const useFixed = useNarrowFixed(fixed);
   const mine = Boolean(client && slot && current === device);
   const pushed = useRef(false);
   const insRef = useRef<HTMLModElement>(null);
 
   useEffect(() => {
     pushed.current = false;
-  }, [slot, device, fixed]);
+  }, [slot, device, useFixed]);
 
   useEffect(() => {
     if (!mine || hidden || pushed.current) return;
@@ -88,13 +111,13 @@ export function AdSlot({
       cancelled = true;
       window.clearInterval(tick);
     };
-  }, [fixed, hidden, mine, slot]);
+  }, [hidden, mine, slot, useFixed]);
 
   if (!mine) return null;
-  const classes = `ad-slot${fixed ? ' ad-fixed' : ''}${hidden ? ' away' : ''}${className ? ` ${className}` : ''}`;
+  const classes = `ad-slot${useFixed ? ' ad-fixed' : ''}${hidden ? ' away' : ''}${className ? ` ${className}` : ''}`;
   return (
     <aside className={classes} aria-label="광고">
-      {fixed ? (
+      {useFixed ? (
         <ins ref={insRef} className="adsbygoogle" style={{ display: 'block' }} data-ad-client={client} data-ad-slot={slot} />
       ) : (
         <ins

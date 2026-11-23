@@ -11,9 +11,16 @@ let fileCache: FileCache | null = null;
 const FILE_TTL_MS = 5 * 60 * 1000;
 const LIST_TTL_MS = 10 * 60 * 1000;
 
+function cleanEnv(value: string | undefined): string {
+  return (value ?? '')
+    .trim()
+    .replace(/^['"]|['"]$/g, '')
+    .trim();
+}
+
 export function storageConfig(): { base: string; key: string } | null {
-  const base = (process.env.BUN_SUPABASE_URL ?? '').replace(/\/$/, '');
-  const key = process.env.BUN_SUPABASE_SERVICE_KEY ?? '';
+  const base = cleanEnv(process.env.BUN_SUPABASE_URL).replace(/\/$/, '');
+  const key = cleanEnv(process.env.BUN_SUPABASE_SERVICE_KEY);
   if (!base || !key) return null;
   return { base, key };
 }
@@ -143,9 +150,31 @@ export async function todayPuzzleImage(date = kstDateKey()): Promise<string | nu
   return `/api/bun/puzzle/img?d=${encodeURIComponent(date)}`;
 }
 
-export async function fetchPuzzleObject(fileName: string): Promise<Response | null> {
+export type PuzzleFetchResult =
+  | { ok: true; response: Response }
+  | { ok: false; detail: string };
+
+export async function fetchPuzzleObject(fileName: string): Promise<PuzzleFetchResult> {
   const cfg = storageConfig();
-  if (!cfg || !fileName || fileName.includes('/') || fileName.includes('..')) return null;
+  if (!cfg) return { ok: false, detail: 'no-config' };
+  if (!fileName || fileName.includes('/') || fileName.includes('..')) {
+    return { ok: false, detail: 'bad-file' };
+  }
+
+  let host = 'unknown';
+  try {
+    host = new URL(cfg.base).host;
+  } catch {
+    return { ok: false, detail: 'bad-url' };
+  }
+  const keyKind = cfg.key.startsWith('sb_secret_')
+    ? 'sb_secret'
+    : cfg.key.startsWith('sb_publishable_')
+      ? 'sb_publishable'
+      : cfg.key.startsWith('eyJ')
+        ? 'jwt'
+        : 'other';
+  const meta = `host=${host};key=${keyKind};keyLen=${cfg.key.length};file=${fileName}`;
 
   const headers = {
     Authorization: `Bearer ${cfg.key}`,
@@ -162,9 +191,10 @@ export async function fetchPuzzleObject(fileName: string): Promise<Response | nu
   for (const path of paths) {
     try {
       const res = await fetch(path, { headers, cache: 'no-store' });
-      if (res.ok) return res;
+      if (res.ok) return { ok: true, response: res };
       statuses.push(res.status);
     } catch (err) {
+      statuses.push(0);
       console.error('puzzle: object path failed', path.split('/storage/')[1], err);
     }
   }
@@ -177,29 +207,28 @@ export async function fetchPuzzleObject(fileName: string): Promise<Response | nu
       cache: 'no-store',
     });
     if (!signed.ok) {
-      console.error('puzzle: object fetch failed', statuses.join(','), 'sign', signed.status);
-      return null;
+      const detail = `${meta};http=${statuses.join(',')};sign=${signed.status}`;
+      console.error('puzzle: object fetch failed', detail);
+      return { ok: false, detail };
     }
     const raw = await signed.text();
     let body: { signedURL?: string; signedUrl?: string } = {};
     try {
       body = JSON.parse(raw) as { signedURL?: string; signedUrl?: string };
     } catch {
-      console.error('puzzle: sign json failed');
-      return null;
+      return { ok: false, detail: `${meta};sign=bad-json` };
     }
     const path = body.signedURL ?? body.signedUrl;
-    if (!path) return null;
+    if (!path) return { ok: false, detail: `${meta};sign=empty` };
     const url = path.startsWith('http') ? path : `${cfg.base}/storage/v1${path.startsWith('/') ? path : `/${path}`}`;
     const fileRes = await fetch(url, { cache: 'no-store' });
     if (!fileRes.ok) {
-      console.error('puzzle: signed fetch failed', fileRes.status);
-      return null;
+      return { ok: false, detail: `${meta};signed=${fileRes.status}` };
     }
-    return fileRes;
+    return { ok: true, response: fileRes };
   } catch (err) {
     console.error('puzzle: sign flow failed', err);
-    return null;
+    return { ok: false, detail: `${meta};http=${statuses.join(',')};sign=throw` };
   }
 }
 

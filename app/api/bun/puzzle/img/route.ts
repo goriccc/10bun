@@ -37,13 +37,13 @@ export async function GET(req: Request) {
     if (!file) return new Response('not found', { status: 404 });
 
     stage = 'fetch';
-    const object = await fetchPuzzleObject(file);
-    if (!object) return new Response('unavailable', { status: 502 });
+    const fetched = await fetchPuzzleObject(file);
+    if (!fetched.ok) return new Response(`unavailable;${fetched.detail}`, { status: 502 });
 
     // Vercel에서 upstream body 스트림을 그대로 넘기면 빈 500이 날 수 있어 복사본으로 반환한다.
     stage = 'body';
-    const type = object.headers.get('content-type') || 'image/webp';
-    const bytes = new Uint8Array(await object.arrayBuffer());
+    const type = fetched.response.headers.get('content-type') || 'image/webp';
+    const bytes = new Uint8Array(await fetched.response.arrayBuffer());
     if (!bytes.byteLength) return new Response('empty', { status: 502 });
 
     return new Response(bytes, {

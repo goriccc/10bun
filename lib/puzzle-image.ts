@@ -146,40 +146,61 @@ export async function todayPuzzleImage(date = kstDateKey()): Promise<string | nu
 export async function fetchPuzzleObject(fileName: string): Promise<Response | null> {
   const cfg = storageConfig();
   if (!cfg || !fileName || fileName.includes('/') || fileName.includes('..')) return null;
-  const res = await fetch(`${cfg.base}/storage/v1/object/authenticated/${BUCKET}/${encodeURIComponent(fileName)}`, {
-    headers: {
-      Authorization: `Bearer ${cfg.key}`,
-      apikey: cfg.key,
-    },
-    cache: 'no-store',
-  });
-  if (res.ok) return res;
 
-  // 일부 프로젝트는 public/authenticated 경로가 다름. sign URL로 한 번 더 시도.
-  const signed = await fetch(`${cfg.base}/storage/v1/object/sign/${BUCKET}/${encodeURIComponent(fileName)}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${cfg.key}`,
-      apikey: cfg.key,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ expiresIn: 120 }),
-    cache: 'no-store',
-  });
-  if (!signed.ok) {
-    console.error('puzzle: object fetch failed', res.status, signed.status);
+  const headers = {
+    Authorization: `Bearer ${cfg.key}`,
+    apikey: cfg.key,
+  };
+  const encoded = encodeURIComponent(fileName);
+  const paths = [
+    `${cfg.base}/storage/v1/object/${BUCKET}/${encoded}`,
+    `${cfg.base}/storage/v1/object/authenticated/${BUCKET}/${encoded}`,
+    `${cfg.base}/storage/v1/object/public/${BUCKET}/${encoded}`,
+  ];
+
+  const statuses: number[] = [];
+  for (const path of paths) {
+    try {
+      const res = await fetch(path, { headers, cache: 'no-store' });
+      if (res.ok) return res;
+      statuses.push(res.status);
+    } catch (err) {
+      console.error('puzzle: object path failed', path.split('/storage/')[1], err);
+    }
+  }
+
+  try {
+    const signed = await fetch(`${cfg.base}/storage/v1/object/sign/${BUCKET}/${encoded}`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ expiresIn: 120 }),
+      cache: 'no-store',
+    });
+    if (!signed.ok) {
+      console.error('puzzle: object fetch failed', statuses.join(','), 'sign', signed.status);
+      return null;
+    }
+    const raw = await signed.text();
+    let body: { signedURL?: string; signedUrl?: string } = {};
+    try {
+      body = JSON.parse(raw) as { signedURL?: string; signedUrl?: string };
+    } catch {
+      console.error('puzzle: sign json failed');
+      return null;
+    }
+    const path = body.signedURL ?? body.signedUrl;
+    if (!path) return null;
+    const url = path.startsWith('http') ? path : `${cfg.base}/storage/v1${path.startsWith('/') ? path : `/${path}`}`;
+    const fileRes = await fetch(url, { cache: 'no-store' });
+    if (!fileRes.ok) {
+      console.error('puzzle: signed fetch failed', fileRes.status);
+      return null;
+    }
+    return fileRes;
+  } catch (err) {
+    console.error('puzzle: sign flow failed', err);
     return null;
   }
-  const body = (await signed.json()) as { signedURL?: string; signedUrl?: string };
-  const path = body.signedURL ?? body.signedUrl;
-  if (!path) return null;
-  const url = path.startsWith('http') ? path : `${cfg.base}/storage/v1${path.startsWith('/') ? path : `/${path}`}`;
-  const fileRes = await fetch(url, { cache: 'no-store' });
-  if (!fileRes.ok) {
-    console.error('puzzle: signed fetch failed', fileRes.status);
-    return null;
-  }
-  return fileRes;
 }
 
 export async function pastPuzzleImages(before = kstDateKey()): Promise<{ date: string; image: string | null; file: string }[]> {

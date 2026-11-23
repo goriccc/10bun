@@ -5,6 +5,7 @@ import { sql } from '@/lib/db';
 export const runtime = 'nodejs';
 
 export async function GET(req: Request) {
+  let stage = 'init';
   try {
     const url = new URL(req.url);
     const date = url.searchParams.get('d') || kstDateKey();
@@ -12,6 +13,7 @@ export async function GET(req: Request) {
       return new Response('bad date', { status: 400 });
     }
 
+    stage = 'config';
     if (!storageConfig()) {
       console.error('puzzle img: BUN_SUPABASE_URL or BUN_SUPABASE_SERVICE_KEY missing');
       return new Response('storage unset', { status: 503 });
@@ -20,6 +22,7 @@ export async function GET(req: Request) {
     const today = kstDateKey();
     let file: string | null = null;
 
+    stage = 'file';
     if (date === today) {
       file = await todayPuzzleFile(date);
     } else if (date < today && sql) {
@@ -33,12 +36,14 @@ export async function GET(req: Request) {
 
     if (!file) return new Response('not found', { status: 404 });
 
+    stage = 'fetch';
     const object = await fetchPuzzleObject(file);
     if (!object) return new Response('unavailable', { status: 502 });
 
-    // Vercel에서 upstream body 스트림을 그대로 넘기면 빈 500이 날 수 있어 버퍼로 반환한다.
+    // Vercel에서 upstream body 스트림을 그대로 넘기면 빈 500이 날 수 있어 복사본으로 반환한다.
+    stage = 'body';
     const type = object.headers.get('content-type') || 'image/webp';
-    const bytes = Buffer.from(await object.arrayBuffer());
+    const bytes = new Uint8Array(await object.arrayBuffer());
     if (!bytes.byteLength) return new Response('empty', { status: 502 });
 
     return new Response(bytes, {
@@ -49,7 +54,7 @@ export async function GET(req: Request) {
       },
     });
   } catch (err) {
-    console.error('puzzle img failed', err);
-    return new Response('error', { status: 500 });
+    console.error('puzzle img failed', stage, err instanceof Error ? err.message : err);
+    return new Response(`error:${stage}`, { status: 500 });
   }
 }

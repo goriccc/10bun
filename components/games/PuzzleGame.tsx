@@ -65,6 +65,54 @@ function formatClock(ms: number): string {
   return m > 0 ? `${m}:${s.padStart(5, '0')}` : s;
 }
 
+function solvedTiles(n: number): number[] {
+  return Array.from({ length: n * n }, (_, i) => (i + 1) % (n * n));
+}
+
+function preloadImage(src: string | null): Promise<string | null> {
+  if (!src) return Promise.resolve(null);
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+/** 완성 판에서 목표 배치까지 빠른 합법 이동 연출. 마지막에 목표로 맞춘다. */
+function buildShuffleFrames(n: number, target: number[], steps: number, seed: number): number[][] {
+  const rnd = (() => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (Math.imul(a, 1664525) + 1013904223) >>> 0;
+      return a / 4294967296;
+    };
+  })();
+  const frames: number[][] = [];
+  const t = solvedTiles(n);
+  let blank = t.indexOf(0);
+  let prev = -1;
+  frames.push(t.slice());
+  for (let i = 0; i < steps; i += 1) {
+    const r = Math.floor(blank / n);
+    const c = blank % n;
+    const next: number[] = [];
+    if (r > 0) next.push(blank - n);
+    if (r < n - 1) next.push(blank + n);
+    if (c > 0) next.push(blank - 1);
+    if (c < n - 1) next.push(blank + 1);
+    const cand = next.filter((x) => x !== prev);
+    const pick = cand[Math.floor(rnd() * cand.length)] ?? next[0]!;
+    t[blank] = t[pick]!;
+    t[pick] = 0;
+    prev = blank;
+    blank = pick;
+    frames.push(t.slice());
+  }
+  frames.push(target.slice());
+  return frames;
+}
+
 export function PuzzleGame() {
   const play = usePlay(15);
   const key = kstDateKey();
@@ -117,6 +165,7 @@ export function PuzzleGame() {
 
   const enterPlay = (board: Puzzle) => {
     setTiles(board.tiles.slice());
+    tilesRef.current = board.tiles.slice();
     startedAt.current = performance.now();
     setClockMs(0);
     setPhase('play');
@@ -124,7 +173,9 @@ export function PuzzleGame() {
 
   const runIntro = (board: Puzzle) => {
     setPuzzle(board);
-    setTiles(Array.from({ length: board.n * board.n }, (_, i) => (i + 1) % (board.n * board.n)));
+    const start = solvedTiles(board.n);
+    setTiles(start);
+    tilesRef.current = start;
     setCountdown(3);
     setPreviewReady(false);
     setIntroKey((value) => value + 1);
@@ -158,9 +209,29 @@ export function PuzzleGame() {
     if (phase !== 'shuffle') return;
     const board = puzzleRef.current;
     if (!board) return;
-    const wait = reduced.current ? 0 : 500;
-    const timer = window.setTimeout(() => enterPlay(board), wait);
-    return () => window.clearTimeout(timer);
+
+    if (reduced.current) {
+      enterPlay(board);
+      return;
+    }
+
+    const frames = buildShuffleFrames(board.n, board.tiles, 18, board.n * 997 + introKey * 13);
+    let frame = 0;
+    setTiles(frames[0]!);
+    tilesRef.current = frames[0]!;
+    const tick = window.setInterval(() => {
+      frame += 1;
+      const next = frames[frame];
+      if (!next) {
+        window.clearInterval(tick);
+        enterPlay(board);
+        return;
+      }
+      setTiles(next);
+      tilesRef.current = next;
+    }, 28);
+
+    return () => window.clearInterval(tick);
   }, [phase, introKey]);
 
   const beginOfficial = async () => {
@@ -179,8 +250,9 @@ export function PuzzleGame() {
       const n = payload.puzzle?.size && payload.puzzle.size >= 3 ? payload.puzzle.size : officialSize;
       // 연습 폴백이어도 오늘 그림은 서버 프록시로 불러온다 (Storage 직접 URL 의존 X)
       const img = payload.puzzle?.image || `/api/bun/puzzle/img?d=${encodeURIComponent(key)}`;
+      const ready = await preloadImage(img);
       const board = makePuzzle(key, n);
-      setImage(img);
+      setImage(ready);
       runIntro(board);
     } catch {
       busyRef.current = false;
@@ -322,9 +394,11 @@ export function PuzzleGame() {
               type="button"
               style={image ? { backgroundImage: `url(${image})` } : undefined}
               onClick={skipPreview}
+              aria-label={`완성 그림 미리보기. ${countdown}`}
             >
-              {countdown}
+              <span className="puzzle-count">{countdown}</span>
             </button>
+            <p className="hint">{previewReady ? '탭하면 바로 섞어요' : '그림을 기억하세요'}</p>
             {!official ? (
               <button className="btn sm ghost" type="button" onClick={again}>
                 돌아가기
@@ -336,8 +410,8 @@ export function PuzzleGame() {
         {(phase === 'shuffle' || phase === 'play' || phase === 'done') && puzzle ? (
           <>
             <div className="puzzle-meta" aria-live="polite">
-              <span>{formatClock(clockMs)}</span>
-              <span>{moves.length}번 이동</span>
+              {phase === 'shuffle' ? <span>섞는 중</span> : <span>{formatClock(clockMs)}</span>}
+              <span>{phase === 'shuffle' ? `${puzzle.n}×${puzzle.n}` : `${moves.length}번 이동`}</span>
             </div>
             {peek && image && phase === 'play' ? (
               <button
@@ -350,7 +424,11 @@ export function PuzzleGame() {
             ) : phase === 'done' && image ? (
               <div className="puzzle-reveal" style={{ backgroundImage: `url(${image})` }} aria-label="완성된 그림" />
             ) : (
-              <div className={`puzzle-board${phase === 'done' ? ' solved' : ''}`} style={{ gridTemplateColumns: `repeat(${puzzle.n}, 1fr)` }}>
+              <div
+                className={`puzzle-board${phase === 'done' ? ' solved' : ''}${phase === 'shuffle' ? ' shuffling' : ''}`}
+                style={{ gridTemplateColumns: `repeat(${puzzle.n}, 1fr)` }}
+                aria-busy={phase === 'shuffle'}
+              >
                 {tiles.map((value, index) => (
                   <button
                     key={`${puzzle.n}-${index}`}
@@ -373,7 +451,7 @@ export function PuzzleGame() {
                 </button>
               </div>
             ) : null}
-            {!official && phase !== 'done' ? (
+            {!official && phase !== 'done' && phase !== 'shuffle' ? (
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 <button className="btn sm ghost" type="button" onClick={again}>
                   돌아가기

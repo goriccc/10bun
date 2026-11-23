@@ -70,6 +70,15 @@ declare
   fn text;
 begin
   revoke all on public.bun_puzzle_days from public, bun_app;
+  if exists (select 1 from pg_roles where rolname = 'anon') then
+    revoke all on public.bun_puzzle_days from anon;
+  end if;
+  if exists (select 1 from pg_roles where rolname = 'authenticated') then
+    revoke all on public.bun_puzzle_days from authenticated;
+  end if;
+  if exists (select 1 from pg_roles where rolname = 'service_role') then
+    revoke all on public.bun_puzzle_days from service_role;
+  end if;
   foreach fn in array array[
     'public.bun_puzzle_get(date)',
     'public.bun_puzzle_assign(date, text)',
@@ -77,6 +86,15 @@ begin
     'public.bun_puzzle_past(date)'
   ] loop
     execute format('revoke all on function %s from public, bun_app', fn);
+    if exists (select 1 from pg_roles where rolname = 'anon') then
+      execute format('revoke all on function %s from anon', fn);
+    end if;
+    if exists (select 1 from pg_roles where rolname = 'authenticated') then
+      execute format('revoke all on function %s from authenticated', fn);
+    end if;
+    if exists (select 1 from pg_roles where rolname = 'service_role') then
+      execute format('revoke all on function %s from service_role', fn);
+    end if;
   end loop;
 end $$;
 
